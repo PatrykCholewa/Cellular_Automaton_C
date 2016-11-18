@@ -6,8 +6,6 @@
 	
 //void zainicjuj_skorowidz( int argc, char **argv, int **skorowidz );
 
-//void szukaj_do_skorowidza( FILE *in, int **skorowidz, char ** argv );
-
 //void dodaj_pozycje_skorowidza( int **skowowidz, int i, int linia, char **argv );
 
 //void wypisz_skorowidz( int **skorowidz, char **argv );
