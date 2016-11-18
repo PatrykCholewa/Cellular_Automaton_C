@@ -4,11 +4,13 @@
 
 #define BUFSIZE 8192   
 	
-//void zainicjuj_skorowidz( int argc, char **argv, int **skorowidz);
+//void zainicjuj_skorowidz( int argc, char **argv, int **skorowidz );
 
-//void dodaj_pozycje_skorowidza( int **skowowidz, int i, int linia, char **slowa );
+//void szukaj_do_skorowidza( FILE *in, int **skorowidz, char ** argv );
 
-//void wypisz_skorowidz( int **skorowidz, char **slowa );
+//void dodaj_pozycje_skorowidza( int **skowowidz, int i, int linia, char **argv );
+
+//void wypisz_skorowidz( int **skorowidz, char **argv );
 
 int
 main( int argc, char **argv ) {
@@ -32,14 +34,7 @@ main( int argc, char **argv ) {
 		return EXIT_FAILURE;
 	}
 
-	ile_linii= 0;
-	while( fgets( buf, BUFSIZE, in ) != NULL ) {
-		ile_linii++;
-		for( i= 0; i < skorowidz[0][0]; i++ )
-			if( strstr( buf, /* kolejne slowa */ ) != NULL ) { ///!!!!!!
-			//	dodaj_pozycje_skorowidza( skorowidz, i, ile_linii, argv );
-		}
-	}
+	szukaj_do_skorowidza( in , skorowidz , argv);
 
 	wypisz_skorowidz( skorowidz , argv );
 
