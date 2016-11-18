@@ -1,14 +1,14 @@
-#include <stdio.h>  // wiadomo po co
+#include <stdio.h> 
 #include <stdlib.h> 
-#include <string.h> // strstr
+#include <string.h>
 
-#define BUFSIZE 8192   // zakładamy, że linie będą krótsze niż 8kB
+#define BUFSIZE 8192   
 	
-//void zainicjuj_skorowidz( int argc, char **argv, skorowidz_t *s );
+//void zainicjuj_skorowidz( int argc, char **argv, int **skorowidz);
 
-//void dodaj_pozycje_skorowidza( skorowidz_t *skorowidz, int i, int linia );
+//void dodaj_pozycje_skorowidza( int **skowowidz, int i, int linia, char **slowa );
 
-//void wypisz_skorowidz( skorowidz_t *s );
+//void wypisz_skorowidz( int **skorowidz, char **slowa );
 
 int
 main( int argc, char **argv ) {
@@ -37,11 +37,11 @@ main( int argc, char **argv ) {
 		ile_linii++;
 		for( i= 0; i < skorowidz[0][0]; i++ )
 			if( strstr( buf, /* kolejne slowa */ ) != NULL ) { ///!!!!!!
-			//	dodaj_pozycje_skorowidza( skorowidz, i, ile_linii );
+			//	dodaj_pozycje_skorowidza( skorowidz, i, ile_linii, argv );
 		}
 	}
 
-	wypisz_skorowidz( skorowidz );
+	wypisz_skorowidz( skorowidz , argv );
 
 	return EXIT_SUCCESS;
 }
