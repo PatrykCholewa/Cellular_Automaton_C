@@ -9,11 +9,11 @@
 	char **slowa;
 } elem_skor_t , *pointer_skor_t;
 
-//void zainicjuj_skorowidz( int argc, char **argv, pointer_skor_t skorowidz );
+//void zainicjuj_skorowidz( int argc, char **argv, elem_skor_t skorowidz );
 
-//void dodaj_pozycje_skorowidza( pointer_skor_t skowowidz, int i, int linia);
+//void dodaj_pozycje_skorowidza( elem_skor_t skowowidz, int i, int linia);
 
-//void wypisz_skorowidz( pointer_skor_t skorowidz);
+//void wypisz_skorowidz( elem_skor_t skorowidz);
 
 int
 main( int argc, char **argv ) {
