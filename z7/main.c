@@ -4,11 +4,16 @@
 
 #define BUFSIZE 8192   
 	
-//void zainicjuj_skorowidz( int argc, char **argv, int **skorowidz );
+#typedef struct c{
+	int **tabela;
+	char **slowa;
+} elem_skor_t , *pointer_skor_t;
 
-//void dodaj_pozycje_skorowidza( int **skowowidz, int i, int linia, char **argv );
+//void zainicjuj_skorowidz( int argc, char **argv, pointer_skor_t skorowidz );
 
-//void wypisz_skorowidz( int **skorowidz, char **argv );
+//void dodaj_pozycje_skorowidza( pointer_skor_t skowowidz, int i, int linia);
+
+//void wypisz_skorowidz( pointer_skor_t skorowidz);
 
 int
 main( int argc, char **argv ) {
@@ -18,11 +23,11 @@ main( int argc, char **argv ) {
 
 	FILE *in= argc > 1 ? fopen( argv[1], "r" ) : stdin;
 
-	int **skorowidz;
+	pointer_skor_t skorowidz;
 
-	zainicjuj_skorowidz( argc, argv, skorowidz);
+	zainicjuj_skorowidz( argc, argv,&skorowidz);
 
-	if( skorowidz[0][0] == 0 ) {
+	if( skorowidz->tabela[0][0] == 0 ) {
 		fprintf( stderr, "%s: błąd: proszę podać słowa do wyszukiwania\n", argv[0] );
 		return EXIT_FAILURE;
 	}
@@ -32,9 +37,9 @@ main( int argc, char **argv ) {
 		return EXIT_FAILURE;
 	}
 
-	szukaj_do_skorowidza( in , skorowidz , argv);
+	szukaj_do_skorowidza( in ,&skorowidz);
 
-	wypisz_skorowidz( skorowidz , argv );
+	wypisz_skorowidz(&skorowidz);
 
 	return EXIT_SUCCESS;
 }
