@@ -2,6 +2,8 @@
 #include <stdlib.h> 
 #include <string.h>
 
+#include "bibl.h"
+
 #define BUFSIZE 8192   
 	
 #typedef struct c{

@@ -9,7 +9,7 @@
 	char **slowa;
 } elem_skor_t , *pointer_skor_t;
 
-void zainicjuj_skorowidz( int argc, char **argv, elem_skor skorowidz );
+void zainicjuj_skorowidz( int argc, char **argv, elem_skor_t skorowidz );
 
 void dodaj_pozycje_skorowidza( elem_skor_t skowowidz, int i, int linia);
 
