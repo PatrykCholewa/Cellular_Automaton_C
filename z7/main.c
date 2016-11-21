@@ -20,9 +20,6 @@ typedef struct c{
 
 int
 main( int argc, char **argv ) {
-	int i;
-	int ile_linii;
-	char buf[BUFSIZE];
 
 	FILE *in= argc > 1 ? fopen( argv[1], "r" ) : stdin;
 
