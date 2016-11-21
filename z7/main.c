@@ -24,7 +24,7 @@ main( int argc, char **argv ) {
 
 	zainicjuj_skorowidz( argc, argv, &skorowidz);
 
-	if( argv < 2 ) {
+	if( argc < 2 ) {
 		fprintf( stderr, "%s: błąd: proszę podać słowa do wyszukiwania\n", argv[0] );
 		return EXIT_FAILURE;
 	}
