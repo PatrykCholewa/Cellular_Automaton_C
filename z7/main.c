@@ -14,7 +14,7 @@ typedef struct c{
 
 //void zainicjuj_skorowidz( int argc, char **argv, skorowidz_t skorowidz );
 
-//void szukaj_do_skorowidza( skorowidz_t skowowidz, int i, int linia);
+//void szukaj_do_skorowidza( FILE *in, int linia);
 
 //void wypisz_skorowidz( skorowidz_t skorowidz);
 
