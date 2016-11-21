@@ -11,9 +11,9 @@ typedef struct c{
 
 //void zainicjuj_skorowidz( int argc, char **argv, skorowidz_t skorowidz );
 
-//void szukaj_do_skorowidza( FILE *in, skorowidz_t skorowidz);
+//void szukaj_do_skorowidza( FILE *in, int argc, skorowidz_t skorowidz);
 
-//void wypisz_skorowidz( skorowidz_t skorowidz);
+//void wypisz_skorowidz(int argc,  skorowidz_t skorowidz);
 
 int
 main( int argc, char **argv ) {
@@ -34,9 +34,9 @@ main( int argc, char **argv ) {
 		return EXIT_FAILURE;
 	}
 
-	szukaj_do_skorowidza( in ,&skorowidz);
+	szukaj_do_skorowidza( in , argc, &skorowidz);
 
-	wypisz_skorowidz(&skorowidz);
+	wypisz_skorowidz(argc , &skorowidz);
 
 	return EXIT_SUCCESS;
 }
