@@ -1,10 +1,7 @@
 #include <stdio.h> 
 #include <stdlib.h> 
-#include <string.h>
 
-#include "bibl.h"
-
-#define BUFSIZE 8192   
+#include "bibl.h"  
 	
 typedef struct c{
 	int **pozycje;
