@@ -7,13 +7,14 @@ typedef struct c{
 	int **pozycje;
 	char **slowa;
 	int *liczba_wystapien;
+	int ile_slow;
 } skorowidz_t;
 
 //void zainicjuj_skorowidz( int argc, char **argv, skorowidz_t skorowidz );
 
-//void szukaj_do_skorowidza( FILE *in, int argc, skorowidz_t skorowidz);
+//void szukaj_do_skorowidza( FILE *in, skorowidz_t skorowidz);
 
-//void wypisz_skorowidz(int argc,  skorowidz_t skorowidz);
+//void wypisz_skorowidz(skorowidz_t skorowidz);
 
 int
 main( int argc, char **argv ) {
@@ -34,9 +35,9 @@ main( int argc, char **argv ) {
 		return EXIT_FAILURE;
 	}
 
-	szukaj_do_skorowidza( in , argc, &skorowidz);
+	szukaj_do_skorowidza( in , &skorowidz);
 
-	wypisz_skorowidz(argc , &skorowidz);
+	wypisz_skorowidz( &skorowidz);
 
 	return EXIT_SUCCESS;
 }
