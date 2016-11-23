@@ -1,16 +1,18 @@
-#include <stdio.h>
+/*#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define BUFSIZE 8192
+#define BUFSIZE 8192 */
 
-#typedef struct c{
-	int **tabela;
+typedef struct {
+	int **pozycje;
 	char **slowa;
-} elem_skor_t , *pointer_skor_t;
+	int *liczba_wystapien;
+	int ile_slow;
+} skorowidz_t;
 
-void zainicjuj_skorowidz( int argc, char **argv, elem_skor_t skorowidz );
+void zainicjuj_skorowidz( int ile_slow, char **slowa, skorowidz_t s );
 
-void dodaj_pozycje_skorowidza( elem_skor_t skowowidz, int i, int linia);
+void szukaj_do_skorowidza( FILE *in, skorowidz_t s);
 
-void wypisz_skorowidz( elem_skor_t skorowidz);
+void wypisz_skorowidz( skorowidz_t skorowidz);
