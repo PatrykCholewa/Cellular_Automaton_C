@@ -5,12 +5,15 @@
 
 #define BUFSIZE 8192
 
-/*typedef struct c{
+/*
+typedef struct c{
 	int **pozycje;
 	char **slowa;
 	int *liczba_wystapien;
 	int ile_slow;
-}skorowidz_t;*/
+}skorowidz_t;
+*/
+
 
 
 static int
@@ -31,9 +34,10 @@ copy(char *s, char*q) {
 }
 
 void
-zainicjuj_skorowidz(int ile_slow, char **slowa, skorowidz_t *s) {
+zainicjuj_skorowidz(int ile_argumentow, char **slowa, skorowidz_t *s) {
 	int i;
-	s->ile_slow = ile_slow-2;
+//	s->ile_slow = malloc ( sizeof (int) );
+	s->ile_slow = ile_argumentow-2;
 	s->pozycje = malloc(s->ile_slow*sizeof (int*) );
 	for(i=0; i<s->ile_slow; i++)
 		s->pozycje[i] = NULL;
@@ -80,3 +84,22 @@ szukaj_do_skorowidza(FILE *in, skorowidz_t *s) {
 		}
 	}
 }
+
+void wypisz_skorowidz( skorowidz_t *skorowidz){
+	int i;
+	for (i = 0 ; i < skorowidz->ile_slow ; i++){
+		if(skorowidz -> liczba_wystapien[i] != 0){
+			printf("Słowo \"%s\" występuje w liniach: ", skorowidz->slowa[i]);
+			int j;
+			printf("%d", skorowidz->pozycje[i][0]);
+			for(j = 1 ; j < skorowidz->liczba_wystapien[i] ; j++){
+				printf(", %d", skorowidz->pozycje[i][j]);
+			}
+			printf(".\n");
+		}else{
+			printf("Nie napotkano słowa \"%s\".\n", skorowidz->slowa[i]);
+		}
+	}
+	return ;
+}
+
