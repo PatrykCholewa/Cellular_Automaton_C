@@ -33,13 +33,13 @@ main( int argc, char **argv ) {
 		return EXIT_FAILURE;
 	}
 
-	skorowidz_t *skorowidz;
+	skorowidz_t skorowidz;
 
-	zainicjuj_skorowidz( argc, argv, skorowidz);
+	zainicjuj_skorowidz( argc, argv, &skorowidz);
 
-	szukaj_do_skorowidza( in , skorowidz);
+	szukaj_do_skorowidza( in , &skorowidz);
 
-	wypisz_skorowidz( skorowidz);
+	wypisz_skorowidz( &skorowidz);
 
 	return EXIT_SUCCESS;
 }

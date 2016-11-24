@@ -36,6 +36,7 @@ copy(char *s, char*q) {
 void
 zainicjuj_skorowidz(int ile_argumentow, char **slowa, skorowidz_t *s) {
 	int i;
+//	s->ile_slow = malloc ( sizeof (int) );
 	s->ile_slow = ile_argumentow-2;
 	s->pozycje = malloc(s->ile_slow*sizeof (int*) );
 	for(i=0; i<s->ile_slow; i++)
