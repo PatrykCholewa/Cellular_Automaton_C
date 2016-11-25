@@ -1,8 +1,5 @@
-/*#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdio.h>
 
-#define BUFSIZE 8192 */
 
 typedef struct {
 	int **pozycje;
@@ -11,8 +8,9 @@ typedef struct {
 	int ile_slow;
 } skorowidz_t;
 
-void zainicjuj_skorowidz( int ile_slow, char **slowa, skorowidz_t s );
 
-void szukaj_do_skorowidza( FILE *in, skorowidz_t s);
+void zainicjuj_skorowidz( int ile_slow, char **slowa, skorowidz_t *s );
 
-void wypisz_skorowidz( skorowidz_t skorowidz);
+void szukaj_do_skorowidza( FILE *in, skorowidz_t *s);
+
+void wypisz_skorowidz( skorowidz_t *skorowidz);
