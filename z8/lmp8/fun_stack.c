@@ -13,8 +13,9 @@ wierzcholek_t sztos;
 
 int
 top_of_funstack( void ) {
-	
-	return sztos->par_level;
+	if(sztos != NULL)
+		return sztos->par_level;
+	return 0;
 }
 
 void
