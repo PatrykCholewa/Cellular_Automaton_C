@@ -4,33 +4,36 @@
 #include "fun_stack.h"
 
 typedef struct e{
-        int par_level;
-        char *funame;
-        struct e *poprz;
-}elem_t, *wierzcholek_t;
+        int parlevel;
+        char *fun_name;
+        struct e *next;
+}elem_t, *stack_t;
 
-wierzcholek_t sztos;
+stack_t sztos;
 
-int
-top_of_funstack( void ) {
-        if(sztos != NULL)
-                return sztos->par_level;
-        return 0;
+int top_of_funstack( void ) {
+        if(sztos == NULL)
+		return 0;
+	return sztos->parlevel;
 }
 
-void
-put_on_fun_stack(int par_level, char *funame) {
-
-        if(sztos == NULL) {
-                sztos = malloc(sizeof (wierzcholek_t));
-
-        }
-
+void put_on_fun_stack(int par_level, char *funame) {
+	
+	elem_t *x = malloc(sizeof *x);
+	if(x != NULL) {
+		x->parlevel = par_level;
+		x->fun_name = funame;
+		x->next = sztos;
+		sztos = x;
+	}
 }
 
 char *get_from_fun_stack( void ) {
-
-
-        return '\0';
+	
+	elem_t *x = sztos;
+	char *tmp = sztos->fun_name;
+	sztos = x->next;
+	free(x);
+	return tmp;
 }
 
