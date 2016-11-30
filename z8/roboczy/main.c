@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "parser.h"
 #include "cout.h"
 //#include "dane.h"
@@ -7,7 +8,7 @@ int main ( int argc, char **argv){
 
 	int i;
 	
-	if( argc = 1 ){
+	if( argc == 1 ){
 		
 		printf("Podaj plik do czytania!");
 		return EXIT_FAILURE;
