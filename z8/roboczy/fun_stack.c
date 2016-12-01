@@ -36,4 +36,3 @@ char *get_from_fun_stack( void ) {
 	free(x);
 	return tmp;
 }
-
