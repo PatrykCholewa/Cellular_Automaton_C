@@ -4,12 +4,13 @@
 #include <ctype.h>
 #include <string.h>
 
-static int  ln= 0;
+static int  ln= 1;
 static char ident[256];
 static FILE *ci= NULL;
 
+
 void    alex_init4file( FILE *in ) {
-   ln= 0;
+   ln= 1;
    ci= in;
 }
 
@@ -116,11 +117,14 @@ int isKeyword( char *slowo){
 	return a;
 }
 lexem_t alex_nextLexem( void ) {
+
   int c;
   while( (c = fgetc(ci)) != EOF ) {
-    if( isspace( c ) )
+    if( c == '\n' )
+			ln++;
+    else if( isspace(c) )
                         continue;
-                else if( c == '\n' )
+    else if( c == '\n' )
                         ln++;
     else if( c == '(' )
                         return OPEPAR;
