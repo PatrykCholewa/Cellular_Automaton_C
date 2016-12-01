@@ -1,7 +1,7 @@
-#include "dane.h"
+/*#include "dane.h"
 #include <stdio.h>
 
-void store_add_def ( char *funame /*function name*/ , int ln /*line number*/ , char * inpname){
+void store_add_def ( char *funame, int ln, char * inpname){
 	printf("DEF %s , %d , %s\n", funame, ln, inpname);
 	return ;
 }
@@ -16,7 +16,7 @@ void store_add_call ( char * funame, int ln, char * inpname){
 	return ;
 }
 
-/*
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -65,12 +65,12 @@ void add_list_pos(char *name, int from, int to, list_t l) {
         }
 }
 
-void store_add_def(char *funame, int end, char *inpname, int ln) {
+void store_add_def(char *funame, int ln, char *inpname) {
         int position = fun_position(funame, dane);
         if(position==-1) {
                 store_t x = malloc(sizeof x);
                 x->fun_name = funame;
-                add_list_pos(inpname, ln, end, x->def);
+                add_list_pos(inpname, 0 , ln, x->def);
                 x->prot = NULL;
                 x->use = NULL;
                 x->next = dane;
@@ -80,16 +80,16 @@ void store_add_def(char *funame, int end, char *inpname, int ln) {
                 int i;
                 for(i=0; i<position; i++)
                         x = x->next;
-                add_list_pos(inpname, ln, end, x->def);
+                add_list_pos(inpname,0 , ln, x->def);
         }
 }
 
-void store_add_proto(char *funame, int end, char *inpname, int ln) {
+void store_add_proto(char *funame, int ln, char *inpname) {
         int position = fun_position(funame, dane);
         if(position==-1) {
                 store_t x = malloc(sizeof x);
                 x->fun_name = funame;
-                add_list_pos(inpname, ln, end, x->prot);
+                add_list_pos(inpname,0, ln, x->prot);
                 x->def = NULL;
                 x->use = NULL;
                 x->next = dane;
@@ -99,18 +99,18 @@ void store_add_proto(char *funame, int end, char *inpname, int ln) {
                 int i;
                 for(i=0; i<position; i++)
                         x = x->next;
-                add_list_pos(inpname, ln, end, x->prot);
+                add_list_pos(inpname,0, ln, x->prot);
         }
 
 }
 
 
-void store_add_call(char *funame, int end, char *inpname, int ln) {
+void store_add_call(char *funame, int ln, char *inpname) {
         int position = fun_position(funame, dane);
         if(position==-1) {
                 store_t x = malloc(sizeof x);
                 x->fun_name = funame;
-                add_list_pos(inpname, ln, end, x->use);
+                add_list_pos(inpname,0, ln, x->use);
 
                 x->prot = NULL;
                 x->def = NULL;
@@ -121,7 +121,7 @@ void store_add_call(char *funame, int end, char *inpname, int ln) {
                 int i;
                 for(i=0; i<position; i++)
                         x = x->next;
-                add_list_pos(inpname, ln, end, x->use);
+                add_list_pos(inpname,0 , ln, x->use);
 
         }
 }
