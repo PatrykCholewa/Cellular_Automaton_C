@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 
 void store_add_def ( char *funame /*function name*/ , int ln /*line number*/ , char * inpname);
