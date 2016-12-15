@@ -152,13 +152,10 @@ make_spl(points_t * pts, spline_t * spl)
 
 	eqs = make_matrix(nb, nb + 1);
 
-#ifdef DEBUG
 #define TESTBASE 500
 	{
 		FILE           *tst = fopen("debug_base_plot.txt", "w");
-		double		dx = (b - a) / (TESTBASE - 1);
-		for( j= 0; j < nb; j++ )
-			xfi( a, b, nb, j, tst );
+		double		dx = (b - a) / (TESTBASE - 1 ) ;
 		for (i = 0; i < TESTBASE; i++) {
 			fprintf(tst, "%g", a + i * dx);
 			for (j = 0; j < nb; j++) {
@@ -167,11 +164,9 @@ make_spl(points_t * pts, spline_t * spl)
 				fprintf(tst, " %g", d2fi(a, b, nb, j, a + i * dx));
 				fprintf(tst, " %g", d3fi(a, b, nb, j, a + i * dx));
 			}
-			fprintf(tst, "\n");
 		}
 		fclose(tst);
 	}
-#endif
 
 	for (j = 0; j < nb; j++) {
 		for (i = 0; i < nb; i++)
