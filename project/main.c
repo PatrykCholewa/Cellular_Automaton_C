@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
-#include<ctype.h>
 /**
  ** #include "struct.h"
  ** #include "alloc.h"
@@ -48,6 +47,7 @@ int getopt2(char **source, int numOfStringsInSource, char *target, int isBoolean
 int main(int argc, char **argv){
 
 	int opt;
+	char *optarg;
 	FILE *in;
 	FILE *out;
 	int max_iter = 1000;
@@ -84,36 +84,30 @@ int main(int argc, char **argv){
         }
 	*/
 
-	
-	while ((opt = getopt(argc, argv, "ceip:")) != -1){
+	// Dodać obsługę błędów
+
+	while ((opt = getopt(argc, argv, "cipe:")) != -1){
 		switch (opt){
 			case 'c':
-				in = fopen( optarg ,"r" );
+				in = fopen( argv[optind] ,"r" );
 				break;
 			case 'i':
-				printf( "%d\n" , max_iter);
-				if(optarg==NULL) printf("optarg == NULL\n");
-				max_iter = atoi(optarg);
-				printf( "%d\n" , max_iter);
-				sscanf(optarg, "%lf", &dt);
+				max_iter = atoi(argv[optind]);
+				sscanf(argv[optind + 1], "%lf", &dt);
 				break;
 			case 'p':
-				out = fopen( optarg , "w" );
+				out = fopen( argv[optind] , "w" );
 				break;
 			case 'e':
-				//b = 1;	- nie wiem po co to b, ale nie ma deklaracji, wiec obkomentowalem, zeby skompilowac.
-				sscanf(optarg, "%lf", &tempk);
-				sscanf(optarg, "%lf", &tk);
+				bool3 = 1;
+				sscanf(argv[optind], "%lf", &tempk);
+				sscanf(argv[optind + 1], "%lf", &tk);
 				break;
 			default:
 				fprintf(stderr, "Błąd oflagowania!");
 				exit(EXIT_FAILURE);
 		}
-	}	
-	/**
-	  * Nie działa, bo ma problemy z konwersją stringów. Nie wiem czemu.
-	  * Przynajmniej umie wchodzić do case'ów.
-	  */
+	}
 	
 	if( in == NULL ){
 		in = fopen( "stale.cfg" , "r");
