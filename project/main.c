@@ -121,8 +121,8 @@ int main(int argc, char **argv){
 	
 	cool_t cool_data;
 	
-	alloc( cool_data );
-	add_const( cool_data , in );		
+	cool_data = alloc( cool_data );
+	cool_data = add_const( cool_data , in );	
 	
 	return 0;
 }	

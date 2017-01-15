@@ -1,4 +1,5 @@
-struct {
+#ifndef STRUCT_DEF
+typedef struct {
 	double A;
 	double mb;
 	double mw;
@@ -12,8 +13,7 @@ struct {
 /**
  ** właśne nie wiem, czy *const_t, czy const_t, ale drugie chyba lepsze
   */
-
-struct {
+typedef struct {
 	double **Y;
 	int Yc; 
 	/**
@@ -21,3 +21,6 @@ struct {
 	  */
 	const_t stale;
 } elem_t, *cool_t;
+
+#define STRUCT_DEF
+#endif
