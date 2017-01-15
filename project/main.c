@@ -17,6 +17,34 @@
  ** #wykreslnik.h"
   */
 
+
+/*
+	MOJA FUNKCJA TO RACZEJ OSTATECZNOSC, DLATEGO
+	JA OBKOMENTOWALEM. JEST PROSTA, W ZWIAZKU
+	Z CZYM NIE WYWALA BLEDU, KIEDY ZNAJDZIE
+	NIEZNANA FLAGE. PO PROSTU JA OMIJA.
+	MIMO TEJ WADY MA TEZ INNA, DOSYC ISTOTNA
+	ZALETE - DZIALA...
+	
+int getopt2(char **source, int numOfStringsInSource, char *target, int isBoolean)
+{
+	int i;
+	for(i=0; i<numOfStringsInSource; i++) {
+		if(strcmp(source[i], target) == 0) {
+			if(isBoolean == 0) {
+				if(i != numOfStringsInSource-1)
+					return i+1;
+				else
+					return -1;
+			}else
+				return i;
+		}
+	}
+	
+	return -1;
+}
+*/
+
 int main(int argc, char **argv){
 
 	int opt;
@@ -27,6 +55,35 @@ int main(int argc, char **argv){
 	double tempk = 200;
 	double tk = 0.4;
 	char bool3 = 0;
+	int i;
+	
+	/*
+		GDYBYSMY UZYLI MOJEJ FUNKCJI,
+		TO WHILE Z GETOPT I SWITCHA
+		TRZEBA USUNAC, A TO ODKOMENTOWAC.
+	
+	opt = getopt2(argv, argc, "-c", 0);
+	if(opt != -1) {
+		in = fopen(argv[opt], "r");
+	}
+	opt = getopt2(argv, argc, "-i", 0);
+        if(opt != -1) {
+		max_iter = atoi(argv[opt]);
+		if(opt != argc-1)
+			dt = atof(argv[opt+1]);
+        }
+	opt = getopt2(argv, argc, "-p", 0);
+        if(opt != -1) {
+		out = fopen(argv[opt], "w");
+        }
+	opt = getopt2(argv, argc, "-e", 0);
+        if(opt != -1) {
+		tempk = atof(argv[opt]);
+		if(opt != argc-1)
+			tk = atof(argv[opt+1]);
+        }
+	*/
+
 	
 	while ((opt = getopt(argc, argv, "ceip:")) != -1){
 		switch (opt){
@@ -35,6 +92,7 @@ int main(int argc, char **argv){
 				break;
 			case 'i':
 				printf( "%d\n" , max_iter);
+				if(optarg==NULL) printf("optarg == NULL\n");
 				max_iter = atoi(optarg);
 				printf( "%d\n" , max_iter);
 				sscanf(optarg, "%lf", &dt);
@@ -43,12 +101,12 @@ int main(int argc, char **argv){
 				out = fopen( optarg , "w" );
 				break;
 			case 'e':
-				b = 1;
+				//b = 1;	- nie wiem po co to b, ale nie ma deklaracji, wiec obkomentowalem, zeby skompilowac.
 				sscanf(optarg, "%lf", &tempk);
 				sscanf(optarg, "%lf", &tk);
 				break;
 			default:
-				fprinf(stderr, "Błąd oflagowania!");
+				fprintf(stderr, "Błąd oflagowania!");
 				exit(EXIT_FAILURE);
 		}
 	}	
@@ -60,7 +118,7 @@ int main(int argc, char **argv){
 	if( in == NULL ){
 		in = fopen( "stale.cfg" , "r");
 		if ( in == NULL ){
-			fprintf (stderr , "Brak pliku wejścia.");
+			fprintf (stderr , "Brak pliku wejścia.\n");
 			exit(EXIT_FAILURE);
 		}
 	}
