@@ -1,9 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
+#include "struct.h"
+#include "alloc.h"
 /**
- ** #include "struct.h"
- ** #include "alloc.h"
  ** #include "matrix.h"
  ** #include "piv_ge_solver.h"
  ** #include "czas.h"
@@ -119,7 +119,10 @@ int main(int argc, char **argv){
 		out = fopen( "wykres.png" , "w" );
 	}
 	
+	cool_t cool_data;
 	
+	alloc( cool_data );
+	add_const( cool_data , in );		
 	
 	return 0;
 }	
