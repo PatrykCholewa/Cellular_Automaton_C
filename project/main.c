@@ -47,9 +47,8 @@ int getopt2(char **source, int numOfStringsInSource, char *target, int isBoolean
 int main(int argc, char **argv){
 
 	int opt;
-	char *optarg;
-	FILE *in;
-	FILE *out;
+	FILE *in = NULL;
+	FILE *out = NULL;
 	int max_iter = 1000;
 	double dt = 0.001;
 	double tempk = 200;
@@ -104,7 +103,7 @@ int main(int argc, char **argv){
 				sscanf(argv[optind + 1], "%lf", &tk);
 				break;
 			default:
-				fprintf(stderr, "Błąd oflagowania!");
+				fprintf(stderr, "Błąd oflagowania!\n");
 				exit(EXIT_FAILURE);
 		}
 	}
@@ -120,9 +119,7 @@ int main(int argc, char **argv){
 		out = fopen( "wykres.png" , "w" );
 	}
 	
-	/**
-	  * ...
-	  */
+	
 	
 	return 0;
 }	
