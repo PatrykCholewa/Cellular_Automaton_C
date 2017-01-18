@@ -123,6 +123,17 @@ int main(int argc, char **argv){
 	
 	cool_data = alloc( cool_data );
 	cool_data = add_const( cool_data , in );	
-	
+
+	if( bool3 == 0 ){
+		//przebiegnij( cool_t cool_data, int max_iter, double dt)
+		// ...
+	} else {
+		// bisektor() ???
+		// ...
+	}
+	// generuj() ???
+	// wypisz_wynik() ???
+	// ... ???
+
 	return 0;
 }	
