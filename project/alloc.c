@@ -8,6 +8,12 @@
 cool_t alloc( cool_t cool_data ){
 	
 	cool_data = malloc( sizeof(*cool_data));
+
+	cool_data->stale.A = 0.0109;
+	cool_data->stale.h = 50;
+	cool_data->stale.mb = 0.4;
+	cool_data->stale.mw = 2.5;
+	cool_data->stale.cb = 0.22;
 	
 	/**
 	  * alloc dla **Y
@@ -38,6 +44,9 @@ cool_t add_const( cool_t cool_data , FILE *in ){
 			cool_data->stale.h = v;
 		}
 	}
+
+	// obsługa błędów
+
 	return cool_data;
 }
 		
