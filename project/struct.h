@@ -19,6 +19,10 @@ typedef struct {
 	/**
 	  *liczba kolumn
 	  */
+	double dt;
+	/**
+	  *krok czasowy
+	  */
 	const_t stale;
 } elem_t, *cool_t;
 

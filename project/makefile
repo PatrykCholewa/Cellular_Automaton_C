@@ -1,5 +1,5 @@
 all : main.c alloc.c
-	gcc main.c alloc.c
+	gcc -Wall main.c alloc.c czas.c
 
 aprox: aproksymator/main.o aproksymator/splines.o aproksymator/points.o aproksymator/aproksymator_na_bazie.o aproksymator/gaus/libge.a
 	$(CC) -o aproksymator/aprox  aproksymator/main.o aproksymator/splines.o aproksymator/points.o aproksymator/aproksymator_na_bazie.o -L aproksymator/gaus -l ge

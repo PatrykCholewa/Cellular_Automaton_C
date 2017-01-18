@@ -4,15 +4,10 @@
 #include "struct.h"
 #include "alloc.h"
 /**
- ** #include "matrix.h"
- ** #include "piv_ge_solver.h"
  ** #include "czas.h"
  ** #mod3.h"
  ** #analizator.h"
  ** #bisekcja.h"
- ** #aproksymator_na_bazie.h"
- ** #points.h"
- ** #splines.h"
  ** #wykreslnik.h"
   */
 
@@ -54,7 +49,6 @@ int main(int argc, char **argv){
 	double tempk = 200;
 	double tk = 0.4;
 	char bool3 = 0;
-	int i;
 	
 	/*
 		GDYBYSMY UZYLI MOJEJ FUNKCJI,
@@ -84,6 +78,10 @@ int main(int argc, char **argv){
 	*/
 
 	// Dodać obsługę błędów
+
+	cool_t cool_data;
+	
+	cool_data = alloc( cool_data );
 
 	while ((opt = getopt(argc, argv, "cipe:")) != -1){
 		switch (opt){
@@ -119,14 +117,10 @@ int main(int argc, char **argv){
 		out = fopen( "wykres.png" , "w" );
 	}
 	
-	cool_t cool_data;
-	
-	cool_data = alloc( cool_data );
 	cool_data = add_const( cool_data , in );	
 
 	if( bool3 == 0 ){
-		//przebiegnij( cool_t cool_data, int max_iter, double dt)
-		// ...
+		cool_data = przebiegnij( cool_data );
 	} else {
 		// bisektor() ???
 		// ...

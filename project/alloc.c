@@ -26,7 +26,6 @@ cool_t add_const( cool_t cool_data , FILE *in ){
 	
 	char s[BUF_SIZE];
 	double v;
-	char c;
 	while( fscanf( in , "%s = %lf" , s , &v) != EOF ){
 		if( strcmp( s , "A" ) == 0 ){
 			cool_data->stale.A = v;
