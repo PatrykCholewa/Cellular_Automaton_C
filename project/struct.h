@@ -10,9 +10,6 @@ typedef struct {
 	  */
 } const_t;
 
-/**
- ** właśne nie wiem, czy *const_t, czy const_t, ale drugie chyba lepsze
-  */
 typedef struct {
 	double **Y;
 	int Yc; 
@@ -23,6 +20,8 @@ typedef struct {
 	/**
 	  *krok czasowy
 	  */
+	double tend;
+	double tempend;
 	const_t stale;
 } elem_t, *cool_t;
 

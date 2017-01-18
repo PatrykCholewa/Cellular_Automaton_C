@@ -3,12 +3,13 @@
 #include<unistd.h>
 #include "struct.h"
 #include "alloc.h"
+#include "czas.h"
+
 /**
- ** #include "czas.h"
- ** #mod3.h"
- ** #analizator.h"
- ** #bisekcja.h"
- ** #wykreslnik.h"
+  * #mod3.h"
+  * #analizator.h"
+  * #bisekcja.h"
+  * #wykreslnik.h"
   */
 
 
@@ -44,10 +45,6 @@ int main(int argc, char **argv){
 	int opt;
 	FILE *in = NULL;
 	FILE *out = NULL;
-	int max_iter = 1000;
-	double dt = 0.001;
-	double tempk = 200;
-	double tk = 0.4;
 	char bool3 = 0;
 	
 	/*
@@ -81,7 +78,7 @@ int main(int argc, char **argv){
 
 	cool_t cool_data;
 	
-	cool_data = alloc( cool_data );
+	cool_data = startalloc( cool_data );
 
 	while ((opt = getopt(argc, argv, "cipe:")) != -1){
 		switch (opt){
@@ -89,16 +86,14 @@ int main(int argc, char **argv){
 				in = fopen( argv[optind] ,"r" );
 				break;
 			case 'i':
-				max_iter = atoi(argv[optind]);
-				sscanf(argv[optind + 1], "%lf", &dt);
+				cool_data->Yc = atoi(argv[optind]);
+				sscanf(argv[optind + 1], "%lf", &cool_data->dt);
 				break;
 			case 'p':
 				out = fopen( argv[optind] , "w" );
 				break;
 			case 'e':
 				bool3 = 1;
-				sscanf(argv[optind], "%lf", &tempk);
-				sscanf(argv[optind + 1], "%lf", &tk);
 				break;
 			default:
 				fprintf(stderr, "Błąd oflagowania!\n");
@@ -106,6 +101,8 @@ int main(int argc, char **argv){
 		}
 	}
 	
+	cool_data = Yalloc( cool_data );
+
 	if( in == NULL ){
 		in = fopen( "stale.cfg" , "r");
 		if ( in == NULL ){
@@ -128,6 +125,8 @@ int main(int argc, char **argv){
 	// generuj() ???
 	// wypisz_wynik() ???
 	// ... ???
+
+	printf( "%lf %lf\n", cool_data->Y[0][0] , cool_data->Y[1][0] );
 
 	return 0;
 }	
