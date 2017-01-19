@@ -8,12 +8,12 @@
 
 void make_plot( char *out, cool_t t) {
 	int i;
-	char dat_file[7] = "aaaaaaa";
-	char dat2_file[7] = "bbbbbbb";
-	char cmd_file[7] = "ccccccc";
-	mkstemp(dat_file);
+	char dat_file[6] = "myplot";
+	char dat2_file[7] = "myplot1";
+	char cmd_file[7] = "myplot2";
+	/*mkstemp(dat_file);
 	mkstemp(dat2_file);
-	mkstemp(cmd_file);
+	mkstemp(cmd_file);*/
 	FILE *tmp1 = fopen(dat_file, "w");	
 	FILE *tmp2 = fopen(dat2_file, "w");
 	FILE *cmd = fopen(cmd_file, "w");

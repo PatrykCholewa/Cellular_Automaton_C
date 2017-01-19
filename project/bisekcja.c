@@ -11,7 +11,7 @@ static double wynik(cool_t t, double mW) {
 }
 
 double szukaj_bisekcyjnie( cool_t t) {
-	double eps = 0.05;
+	double eps = 0.0599;
 	double a = 0.001;
 	double b = 100.0;
 	double tmp = (a+b)/2;
