@@ -145,7 +145,8 @@ int main(int argc, char **argv){
 	if( bool3 == 0 ){
 	
 		cool_data = przebiegnij( cool_data );
-		printf("Czas po ktorym pret osiagnie temperature %gC: %g\n", cool_data->tempend, wynikosprawdzacz(cool_data));
+		printf("Temperatura koncowa: %g\n", wynikosprawdzacz_temp(cool_data));
+		printf("Czas po ktorym pret osiagnie dana temperature: %g\n", wynikosprawdzacz(cool_data));
 
 	} else {
 		printf("Masa masa wody wymagana do schlodzenia preta w %g sek.: %g\n", cool_data->tend , szukaj_bisekcyjnie(cool_data));	
