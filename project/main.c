@@ -139,7 +139,7 @@ int main(int argc, char **argv){
 
 	snprintf( stmp, TMP_SIZE , "%lf" , (double)cool_data->Yc * cool_data->dt);
 	snprintf( stmp2, TMP_SIZE , "%d" , cool_data->Yc);
-	ret = execl( "./intrp","./intrp","-s","spl","-p",cwfilename,"-g","myplot","-f","0","-t",stmp,"-n",stmp2,NULL);
+	ret = execl( "./intrp","./intrp","-s","spl","-p",cwfilename,"-g","cwplot","-f","0","-t",stmp,"-n",stmp2,NULL);
 
 	if (ret == -1 ){
 		fprintf( stderr , "Problemy z użyciem pliku do wyliczenia cw.\n");
