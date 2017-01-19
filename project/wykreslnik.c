@@ -14,8 +14,8 @@ void make_plot( char *out, cool_t t) {
 	mkstemp(dat_file);
 	mkstemp(dat2_file);
 	mkstemp(cmd_file);
-	FILE *tmp1 = fopen(dat_file, "w");	// pret
-	FILE *tmp2 = fopen(dat2_file, "w");	//ciecz
+	FILE *tmp1 = fopen(dat_file, "w");	/* pret */
+	FILE *tmp2 = fopen(dat2_file, "w");	/* ciecz */
 	FILE *cmd = fopen(cmd_file, "w");
 	
 	for(i=0; i<t->Yc; i++) {

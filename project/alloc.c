@@ -34,11 +34,11 @@ cool_t startalloc( cool_t cool_data , int max_iter ){
 
 cool_t add_const( cool_t cool_data , FILE *in ){
 	
-	cool_data->Y[1][0] = 65;
-	cool_data->Y[0][0] = 1200;
-
 	char s[BUF_SIZE];
 	double v;
+	
+	cool_data->Y[1][0] = 65;
+	cool_data->Y[0][0] = 1200;
 
 	while( fscanf( in , "%s = %lf" , s , &v) != EOF ){
 		if( strcmp( s , "A" ) == 0 ){
@@ -69,9 +69,11 @@ cool_t add_const( cool_t cool_data , FILE *in ){
 			cool_data->Y[1][0] = v;
 		}
 	}
-
-	// obsługa błędów
-
+	
+	/*
+	obsługa błędów
+	*/
+	
 	return cool_data;
 }
 
