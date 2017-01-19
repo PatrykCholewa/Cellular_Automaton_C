@@ -5,7 +5,7 @@ aprox: aproksymator/main.o aproksymator/splines.o aproksymator/points.o aproksym
 	$(CC) -o aproksymator/aprox  aproksymator/main.o aproksymator/splines.o aproksymator/points.o aproksymator/aproksymator_na_bazie.o -L aproksymator/gaus -l ge
 
 intrp: aproksymator/main.o aproksymator/splines.o aproksymator/points.o aproksymator/interpolator.o aproksymator/gaus/libge.a
-	$(CC) -o aproksymator/intrp  aproksymator/main.o aproksymator/splines.o aproksymator/points.o aproksymator/interpolator.o -L gaus -l ge
+	$(CC) -o intrp  aproksymator/main.o aproksymator/splines.o aproksymator/points.o aproksymator/interpolator.o -L gaus -l ge
 
 prosta: aproksymator/main.o aproksymator/splines.o aproksymator/points.o aproksymator/prosta.o
 	$(CC) -o aproksymator/prosta  aproksymator/main.o aproksymator/splines.o aproksymator/points.o aproksymator/ prosta.o	
