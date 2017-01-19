@@ -1,3 +1,2 @@
 #include "struct.h"
-
-void generuj( cool_t cool_data );
+void make_plot( char *out,  cool_t t);
