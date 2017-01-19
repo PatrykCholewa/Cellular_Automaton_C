@@ -4,14 +4,14 @@
 #include "struct.h"
 #include "alloc.h"
 #include "czas.h"
-
+#include "wykreslnik.h"
+//#include ""
 #define TMP_SIZE 50
 
-/**
+/** 
   * #mod3.h"
   * #analizator.h"
   * #bisekcja.h"
-  * #wykreslnik.h"
   */
 
 
@@ -139,23 +139,25 @@ int main(int argc, char **argv){
 
 	snprintf( stmp, TMP_SIZE , "%lf" , (double)cool_data->Yc * cool_data->dt);
 	snprintf( stmp2, TMP_SIZE , "%d" , cool_data->Yc);
-	ret = execl( "./intrp","./intrp","-s","spl","-p",cwfilename,"-g","cwplot","-f","0","-t",stmp,"-n",stmp2,NULL);
+	
+	//ret = execl( "./intrp","./intrp","-s","spl","-p",cwfilename,"-g","cwplot","-f","0","-t",stmp,"-n",stmp2,NULL);
 
 	if (ret == -1 ){
 		fprintf( stderr , "Problemy z użyciem pliku do wyliczenia cw.\n");
 		exit(EXIT_FAILURE);
 	}
-
+	
 	if( bool3 == 0 ){
+		printf ( "0\n" ); //
 		cool_data = przebiegnij( cool_data );
 	} else {
 		// bisektor() ???
 		// ...
 	}
-	// generuj() ???
+	generuj( cool_data );
 	// wypisz_wynik() ???
 	// ... ???
-
+	
 	printf( "%d\n", ret);
 
 	return 0;
