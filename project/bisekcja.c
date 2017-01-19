@@ -1,6 +1,7 @@
 #include "bisekcja.h"
 #include "czas.h"
 #include "analizator_danych.h"
+#include <stdio.h>
 
 static double wynik(cool_t t, double mW) {
 	t->stale.mw = mW;
@@ -10,19 +11,17 @@ static double wynik(cool_t t, double mW) {
 }
 
 double szukaj_bisekcyjnie( cool_t t) {
-	double eps = 0.01;
-	double a = wynik(t, 60.0);
-	double b = a;
-	while(wynik(t, a) - t->tend < 0)
-		a /= 2;
-	while(wynik(t, b) - t->tend > 0)
-		b += b;
-	
+	double eps = 0.05;
+	double a = 0.25;
+	double b = 200;
+
 	while((wynik(t, a)-t->tend)+(wynik(t, b)-t->tend) > eps) {
-		double tmp = (a+b)/2;
-		if(wynik(t, tmp)-t->tend == t->tempend)
+		double tmp = ((a+b)/2.0);
+		printf("a %g   b %g   tmp %g    t %g\n",a, b, tmp, wynik(t, tmp)-t->tend);
+		printf("%g\n", t->stale.mw);
+		if(wynik(t, tmp)-t->tend == 0)
 			return tmp;
-		else if((wynik(t, tmp)-t->tend) * (wynik(t, a)-t->tend) < 0)
+		else if(wynik(t, tmp)-t->tend < 0)
 			b = tmp;
 		else
 			a = tmp;

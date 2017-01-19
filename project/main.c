@@ -134,16 +134,15 @@ int main(int argc, char **argv){
 	//ret = execl( "./intrp","./intrp","-s","spl","-p",cwfilename,"-g","cwplot","-f","0","-t",stmp,"-n",stmp2,NULL);
 
 	cool_data = cw_gen( cool_data , "cwplot" );
-
+	
 	if (ret == -1 ){
 		fprintf( stderr , "Problemy z użyciem pliku do wyliczenia cw.\n");
 		exit(EXIT_FAILURE);
 	}
 	
 	if( bool3 == 0 ){
-	
 		cool_data = przebiegnij( cool_data );
-		printf("Temperatura koncowa: %g\n", wynikosprawdzacz_temp(cool_data));
+		printf("Temperatura koncowa: %g\n", cool_data->Y[0][cool_data->Yc]);
 		printf("Czas po ktorym pret osiagnie dana temperature: %g\n", wynikosprawdzacz(cool_data));
 
 	} else {
