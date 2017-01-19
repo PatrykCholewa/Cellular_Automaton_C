@@ -19,8 +19,8 @@ void make_plot( char *out, cool_t t) {
 	FILE *cmd = fopen(cmd_file, "w");
 	
 	for(i=0; i<t->Yc; i++) {
-		fprintf(tmp1, "%g %g\n", i*t->dt, t->Y[0][i]);
-		fprintf(tmp2, "%g %g\n", i*t->dt, t->Y[1][i]);
+		fprintf(tmp1, "%g %g\n", (double)i*t->dt, t->Y[0][i]);
+		fprintf(tmp2, "%g %g\n", (double)i*t->dt, t->Y[1][i]);
 	}                                                          
 	
 	fclose(tmp1);
