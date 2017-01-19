@@ -45,6 +45,7 @@ int main(int argc, char **argv){
 	int opt;
 	FILE *in = NULL;
 	FILE *out = NULL;
+	FILE *cwfile = NULL;
 	char bool3 = 0;
 	
 	/*
@@ -80,7 +81,7 @@ int main(int argc, char **argv){
 	
 	cool_data = startalloc( cool_data );
 
-	while ((opt = getopt(argc, argv, "cipe:")) != -1){
+	while ((opt = getopt(argc, argv, "cipew:")) != -1){
 		switch (opt){
 			case 'c':
 				in = fopen( argv[optind] ,"r" );
@@ -94,6 +95,9 @@ int main(int argc, char **argv){
 				break;
 			case 'e':
 				bool3 = 1;
+				break;
+			case 'w':
+				cwfile = fopen( argv[optind] , "r" );
 				break;
 			default:
 				fprintf(stderr, "Błąd oflagowania!\n");
@@ -110,9 +114,17 @@ int main(int argc, char **argv){
 			exit(EXIT_FAILURE);
 		}
 	}
+	if( cwfile == NULL ){
+		cwfile = fopen( "cw.cfg" , "r");
+		if ( cwfile == NULL ){
+			fprintf (stderr , "Brak pliku z danymi, co do ciepła właściwego..\n");
+			exit(EXIT_FAILURE);
+		}
+	}
 	if (out == NULL ){
 		out = fopen( "wykres.png" , "w" );
 	}
+	
 	
 	cool_data = add_const( cool_data , in );	
 

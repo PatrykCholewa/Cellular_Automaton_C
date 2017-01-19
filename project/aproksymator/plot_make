@@ -1,4 +1,0 @@
-set terminal png
-set output "aproksymowany.png"
-plot "debug_base_plot.txt"
-exit
