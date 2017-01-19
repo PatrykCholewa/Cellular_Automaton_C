@@ -154,7 +154,7 @@ int main(int argc, char **argv){
 		// bisektor() ???
 		// ...
 	}
-	generuj( cool_data );
+	make_plot(out, cool_data );
 	// wypisz_wynik() ???
 	// ... ???
 	
