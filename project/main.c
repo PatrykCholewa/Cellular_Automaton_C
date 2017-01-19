@@ -144,8 +144,9 @@ int main(int argc, char **argv){
 	}
 	
 	if( bool3 == 0 ){
-		printf ( "0\n" ); //
+	
 		cool_data = przebiegnij( cool_data );
+
 	} else {
 		// bisektor() ???
 		// ...

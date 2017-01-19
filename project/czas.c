@@ -1,7 +1,7 @@
 #include "struct.h"
 
 double cw( cool_t cool_data){ 
-	return 0.07;
+	return 0.2;
 }
 
 cool_t przebiegnij( cool_t cool_data){
