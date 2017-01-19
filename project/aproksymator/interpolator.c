@@ -1,5 +1,5 @@
 #include "makespl.h"
-#include "piv_ge_solver.h"
+#include "gaus/piv_ge_solver.h"
 
 #include <stdio.h>
 
