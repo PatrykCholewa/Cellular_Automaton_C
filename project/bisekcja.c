@@ -35,8 +35,10 @@ double szukaj_bisekcyjnie( cool_t t) {
 		else
 			b = tmp;
 		tmp = (a+b)/2;
-		printf("a=%g b=%g tmp=%g wyn=%g\n",a,b,tmp, wynik(t, tmp));
+		printf("a=%g b=%g sr=%g wyn=%g\n",a,b,tmp, wynik(t, tmp));
 	}
+	
+	printf("Temp = %g\n", t->Y[1][t->Yc]);
 	
 	return tmp;
 }
