@@ -9,34 +9,6 @@
 #include "bisekcja.h"
 #define TMP_SIZE 50
 
-
-/*
-	MOJA FUNKCJA TO RACZEJ OSTATECZNOSC, DLATEGO
-	JA OBKOMENTOWALEM. JEST PROSTA, W ZWIAZKU
-	Z CZYM NIE WYWALA BLEDU, KIEDY ZNAJDZIE
-	NIEZNANA FLAGE. PO PROSTU JA OMIJA.
-	MIMO TEJ WADY MA TEZ INNA, DOSYC ISTOTNA
-	ZALETE - DZIALA...
-	
-int getopt2(char **source, int numOfStringsInSource, char *target, int isBoolean)
-{
-	int i;
-	for(i=0; i<numOfStringsInSource; i++) {
-		if(strcmp(source[i], target) == 0) {
-			if(isBoolean == 0) {
-				if(i != numOfStringsInSource-1)
-					return i+1;
-				else
-					return -1;
-			}else
-				return i;
-		}
-	}
-	
-	return -1;
-}
-*/
-
 int main(int argc, char **argv){
 
 	int opt;
@@ -47,35 +19,7 @@ int main(int argc, char **argv){
 	char stmp[TMP_SIZE];
 	char stmp2[TMP_SIZE];
 	char bool3 = 0;
-	int ret;
-	
-	
-	/*
-		GDYBYSMY UZYLI MOJEJ FUNKCJI,
-		TO WHILE Z GETOPT I SWITCHA
-		TRZEBA USUNAC, A TO ODKOMENTOWAC.
-	
-	opt = getopt2(argv, argc, "-c", 0);
-	if(opt != -1) {
-		in = fopen(argv[opt], "r");
-	}
-	opt = getopt2(argv, argc, "-i", 0);
-        if(opt != -1) {
-		max_iter = atoi(argv[opt]);
-		if(opt != argc-1)
-			dt = atof(argv[opt+1]);
-        }
-	opt = getopt2(argv, argc, "-p", 0);
-        if(opt != -1) {
-		out = fopen(argv[opt], "w");
-        }
-	opt = getopt2(argv, argc, "-e", 0);
-        if(opt != -1) {
-		tempk = atof(argv[opt]);
-		if(opt != argc-1)
-			tk = atof(argv[opt+1]);
-        }
-	*/
+	int ret = 0;
 
 	// Dodać obsługę błędów
 
@@ -128,10 +72,14 @@ int main(int argc, char **argv){
 	
 	cool_data = add_const( cool_data , in );
 	
-	snprintf( stmp, TMP_SIZE , "%lf" , /*(double)cool_data->Yc * cool_data->dt*/ 2000.0);
+	/*
+	
+	snprintf( stmp, TMP_SIZE , "%lf" , (double)cool_data->Yc * cool_data->dt*);
 	snprintf( stmp2, TMP_SIZE , "%d" , cool_data->Yc + 1);
 	
-	//ret = execl( "./intrp","./intrp","-s","spl","-p",cwfilename,"-g","cwplot","-f","0","-t",stmp,"-n",stmp2,NULL);
+	ret = execl( "./intrp","./intrp","-s","spl","-p",cwfilename,"-g","cwplot","-f","0","-t",stmp,"-n",stmp2,NULL);
+
+	*/
 
 	cool_data = cw_gen( cool_data , "cwplot" );
 
@@ -150,10 +98,6 @@ int main(int argc, char **argv){
 		printf("Masa masa wody wymagana do schlodzenia preta w %g sek.: %g\n", cool_data->tend , szukaj_bisekcyjnie(cool_data));	
 	}
 	make_plot(out, cool_data );
-	// wypisz_wynik() ???	WYNIK ZALEZY OD TRYBU DZIALANIE PROGRAMU
-	// ... ???		WIEC LEPIEJ GO WYPISYWAC W TYM IF'IE NA GORZE
-	
-	printf( "%d\n", ret);
 
 	return 0;
 }	
