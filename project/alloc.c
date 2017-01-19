@@ -26,8 +26,8 @@ cool_t startalloc( cool_t cool_data , int max_iter ){
 	cool_data->stale.cb = 0.22;
 	cool_data->tend = 0.4;
 	cool_data->tempend = 200;
-	cool_data->Yc = 1000;
-	cool_data->dt = 0.01;	
+	cool_data->Yc = 2000;
+	cool_data->dt = 0.001;	
 
 	return cool_data;
 }
