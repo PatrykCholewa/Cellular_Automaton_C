@@ -5,9 +5,6 @@ typedef struct {
 	double mw;
 	double cb;
 	double h;
-	/**
-	  *double cw
-	  */
 } const_t;
 
 typedef struct {
@@ -22,6 +19,7 @@ typedef struct {
 	  */
 	double tend;
 	double tempend;
+	//double *cw
 	const_t stale;
 } elem_t, *cool_t;
 

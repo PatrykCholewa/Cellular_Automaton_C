@@ -4,7 +4,7 @@
 
 cool_t przebiegnij( cool_t cool_data);
 
-cool_t operuj_miejscowo( cool_t cool_data); 
+double cw( cool_t cool_data); 
 
 #define CZAS_DEF
 #endif

@@ -1,5 +1,5 @@
-all :	main.c alloc.c czas.c
-	gcc -Wall main.c alloc.c czas.c
+all :	main.c alloc.c czas.c wykreslnik.c
+	gcc -Wall main.c alloc.c czas.c wykreslnik.c
 
 compile : intrp all	
 
