@@ -14,11 +14,11 @@ void make_plot( char *out, cool_t t) {
 	mkstemp(dat_file);
 	mkstemp(dat2_file);
 	mkstemp(cmd_file);
-	FILE *tmp1 = fopen(dat_file, "w");	// pret
-	FILE *tmp2 = fopen(dat2_file, "w");	//ciecz
+	FILE *tmp1 = fopen(dat_file, "w");	
+	FILE *tmp2 = fopen(dat2_file, "w");
 	FILE *cmd = fopen(cmd_file, "w");
 	
-	for(i=0; i<t->Yc; i++) {
+	for(i=0; i<=t->Yc; i++) {
 		fprintf(tmp1, "%g %g\n", (double)i*t->dt, t->Y[0][i]);
 		fprintf(tmp2, "%g %g\n", (double)i*t->dt, t->Y[1][i]);
 	}                                                          

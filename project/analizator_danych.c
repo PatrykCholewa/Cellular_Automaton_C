@@ -1,7 +1,7 @@
 #include "analizator_danych.h"
 
 double wynikosprawdzacz( cool_t t) {
-	double eps = 0.01;
+	double eps = (2500000*t->dt)/t->Yc;
 	double czas = 0;
 	int i = 0;
 	

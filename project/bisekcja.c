@@ -12,9 +12,11 @@ static double wynik(cool_t t, double mW) {
 
 double szukaj_bisekcyjnie( cool_t t) {
 	double eps = 0.05;
-	double a = 0.25;
-	double b = 200;
-
+	double a = 0.001;
+	double b = 100.0;
+	double tmp = (a+b)/2;
+	printf("%g\n", wynik(t, t->stale.mw));
+	/*
 	while((wynik(t, a)-t->tend)+(wynik(t, b)-t->tend) > eps) {
 		double tmp = ((a+b)/2.0);
 		printf("a %g   b %g   tmp %g    t %g\n",a, b, tmp, wynik(t, tmp)-t->tend);
@@ -25,10 +27,16 @@ double szukaj_bisekcyjnie( cool_t t) {
 			b = tmp;
 		else
 			a = tmp;
+	}*/
+
+	while(wynik(t, tmp) > t->tend+eps || wynik(t, tmp) < t->tend-eps) {
+		if(wynik(t, tmp) < t->tend)
+			a = tmp;
+		else
+			b = tmp;
+		tmp = (a+b)/2;
+		printf("a=%g b=%g tmp=%g wyn=%g\n",a,b,tmp, wynik(t, tmp));
 	}
 	
-	t->stale.mw = (a+b)/2;
-	t = przebiegnij(t);
-	
-	return (a+b)/2;
+	return tmp;
 }
