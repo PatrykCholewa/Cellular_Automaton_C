@@ -1,5 +1,5 @@
 all :	main.c alloc.c czas.c wykreslnik.c analizator_danych.c bisekcja.c
-	gcc -Wall main.c alloc.c czas.c wykreslnik.c analizator_danych.c bisekcja.c
+	gcc -Wall -pedantic main.c alloc.c czas.c wykreslnik.c analizator_danych.c bisekcja.c
 
 compile : intrp all	
 

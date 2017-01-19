@@ -14,14 +14,18 @@ int main(int argc, char **argv){
 	int opt;
 	FILE *in = NULL;
 	char *out = "wykres.png";
+	/*
 	FILE *cwfile = NULL;
 	char *cwfilename;
 	char stmp[TMP_SIZE];
 	char stmp2[TMP_SIZE];
+	*/
 	char bool3 = 0;
 	int ret = 0;
-
-	// Dodać obsługę błędów
+	
+	/*
+	Dodać obsługę błędów
+	*/
 
 	cool_t cool_data;
 	
@@ -43,8 +47,10 @@ int main(int argc, char **argv){
 				bool3 = 1;
 				break;
 			case 'w':
+				/*
 				cwfile = fopen( argv[optind] , "r" );
 				cwfilename = argv[optind];
+				*/
 				break;
 			default:
 				fprintf(stderr, "Błąd oflagowania!\n");
@@ -61,6 +67,7 @@ int main(int argc, char **argv){
 			exit(EXIT_FAILURE);
 		}
 	}
+	/*
 	if( cwfile == NULL ){
 		cwfile = fopen( "cw.cfg" , "r");
 		cwfilename = "cw.cfg";
@@ -69,6 +76,7 @@ int main(int argc, char **argv){
 			exit(EXIT_FAILURE);
 		}
 	}
+	*/
 	
 	cool_data = add_const( cool_data , in );
 	
