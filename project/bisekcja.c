@@ -9,7 +9,7 @@ static double wynik(cool_t t, double mW) {
 	return wynikosprawdzacz(t);
 }
 
-double szukaj_bisekcyjnie( double t_pr, double t_c, cool_t t) {
+double szukaj_bisekcyjnie( cool_t t) {
 	double eps = 0.01;
 	double a = wynik(t, 60.0);
 	double b = a;
@@ -27,6 +27,9 @@ double szukaj_bisekcyjnie( double t_pr, double t_c, cool_t t) {
 		else
 			a = tmp;
 	}
+	
+	t->stale.mw = (a+b)/2;
+	t = przebiegnij(t);
 	
 	return (a+b)/2;
 }

@@ -5,13 +5,12 @@
 #include "alloc.h"
 #include "czas.h"
 #include "wykreslnik.h"
-//#include ""
+#include "analizator_danych.h"
+#include "bisekcja.h"
 #define TMP_SIZE 50
 
 /** 
   * #mod3.h"
-  * #analizator.h"
-  * #bisekcja.h"
   */
 
 
@@ -146,14 +145,14 @@ int main(int argc, char **argv){
 	if( bool3 == 0 ){
 	
 		cool_data = przebiegnij( cool_data );
+		printf("Czas po ktorym pret osiagnie temperature %gC: %g\n", cool_data->tempend, wynikosprawdzacz(cool_data));
 
 	} else {
-		// bisektor() ???
-		// ...
+		printf("Masa masa wody wymagana do schlodzenia preta w %g sek.: %g\n", cool_data->tend , szukaj_bisekcyjnie(cool_data));	
 	}
 	make_plot(out, cool_data );
-	// wypisz_wynik() ???
-	// ... ???
+	// wypisz_wynik() ???	WYNIK ZALEZY OD TRYBU DZIALANIE PROGRAMU
+	// ... ???		WIEC LEPIEJ GO WYPISYWAC W TYM IF'IE NA GORZE
 	
 	printf( "%d\n", ret);
 
