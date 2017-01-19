@@ -19,7 +19,7 @@ typedef struct {
 	  */
 	double tend;
 	double tempend;
-	//double *cw
+	double **cw;
 	const_t stale;
 } elem_t, *cool_t;
 

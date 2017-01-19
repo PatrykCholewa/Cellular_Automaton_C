@@ -27,7 +27,7 @@ cool_t startalloc( cool_t cool_data , int max_iter ){
 	cool_data->tend = 0.4;
 	cool_data->tempend = 200;
 	cool_data->Yc = 1000;
-	cool_data->dt = 0.001;	
+	cool_data->dt = 0.01;	
 
 	return cool_data;
 }
@@ -74,5 +74,25 @@ cool_t add_const( cool_t cool_data , FILE *in ){
 
 	return cool_data;
 }
+
+cool_t cw_gen( cool_t cool_data , char *cwplot ){
+
+	int i;
+	FILE *in = fopen( cwplot , "r" );
+	cool_data->cw = malloc( 2 * sizeof (*cool_data->cw));
+
+	cool_data->cw[0] = malloc( ( cool_data->Yc + 1 ) * sizeof (cool_data->cw[0] ));
+	cool_data->cw[1] = malloc( ( cool_data->Yc + 1 ) * sizeof (cool_data->cw[1] ));
+
+	for( i = 0 ; i <= cool_data->Yc ; i++ ){
+	
+		fscanf( in , "%lf %lf" , &(cool_data->cw[0][i]) , &(cool_data->cw[1][i]));
+
+	}
+
+	return cool_data;
+
+}
+
 		
 		
