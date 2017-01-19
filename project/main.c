@@ -5,6 +5,8 @@
 #include "alloc.h"
 #include "czas.h"
 
+#define TMP_SIZE 50
+
 /**
   * #mod3.h"
   * #analizator.h"
@@ -46,7 +48,12 @@ int main(int argc, char **argv){
 	FILE *in = NULL;
 	FILE *out = NULL;
 	FILE *cwfile = NULL;
+	char *cwfilename;
+	char stmp[TMP_SIZE];
+	char stmp2[TMP_SIZE];
 	char bool3 = 0;
+	int ret;
+	
 	
 	/*
 		GDYBYSMY UZYLI MOJEJ FUNKCJI,
@@ -98,6 +105,7 @@ int main(int argc, char **argv){
 				break;
 			case 'w':
 				cwfile = fopen( argv[optind] , "r" );
+				cwfilename = argv[optind];
 				break;
 			default:
 				fprintf(stderr, "Błąd oflagowania!\n");
@@ -116,6 +124,7 @@ int main(int argc, char **argv){
 	}
 	if( cwfile == NULL ){
 		cwfile = fopen( "cw.cfg" , "r");
+		cwfilename = "../cw.cfg";
 		if ( cwfile == NULL ){
 			fprintf (stderr , "Brak pliku z danymi, co do ciepła właściwego..\n");
 			exit(EXIT_FAILURE);
@@ -126,7 +135,16 @@ int main(int argc, char **argv){
 	}
 	
 	
-	cool_data = add_const( cool_data , in );	
+	cool_data = add_const( cool_data , in );
+
+	snprintf( stmp, TMP_SIZE , "%lf" , (double)cool_data->Yc * cool_data->dt);
+	snprintf( stmp2, TMP_SIZE , "%d" , cool_data->Yc);
+	//ret = execl( "./aproksymator/intrp","-s","spl","-p",cwfilename,"-g","myplot","-f","0","-t",stmp,"-n",stmp2);
+
+	if (ret == -1 ){
+		fprintf( stderr , "Problemy z użyciem pliku do wyliczenia cw.\n");
+		exit(EXIT_FAILURE);
+	}
 
 	if( bool3 == 0 ){
 		cool_data = przebiegnij( cool_data );
@@ -138,7 +156,7 @@ int main(int argc, char **argv){
 	// wypisz_wynik() ???
 	// ... ???
 
-	printf( "%lf %lf\n", cool_data->Y[0][0] , cool_data->Y[1][0] );
+	printf( "%d\n", ret);
 
 	return 0;
 }	
