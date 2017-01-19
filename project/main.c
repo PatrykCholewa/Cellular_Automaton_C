@@ -46,7 +46,7 @@ int main(int argc, char **argv){
 
 	int opt;
 	FILE *in = NULL;
-	FILE *out = NULL;
+	char *out = "wykres.png";
 	FILE *cwfile = NULL;
 	char *cwfilename;
 	char stmp[TMP_SIZE];
@@ -98,7 +98,7 @@ int main(int argc, char **argv){
 				sscanf(argv[optind + 1], "%lf", &cool_data->dt);
 				break;
 			case 'p':
-				out = fopen( argv[optind] , "w" );
+				out = argv[optind];
 				break;
 			case 'e':
 				bool3 = 1;
@@ -130,10 +130,6 @@ int main(int argc, char **argv){
 			exit(EXIT_FAILURE);
 		}
 	}
-	if (out == NULL ){
-		out = fopen( "wykres.png" , "w" );
-	}
-	
 	
 	cool_data = add_const( cool_data , in );
 
