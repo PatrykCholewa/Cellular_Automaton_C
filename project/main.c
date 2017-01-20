@@ -102,7 +102,7 @@ int main(int argc, char **argv){
 		printf("Czas po ktorym pret osiagnie dana temperature: %g\n", wynikosprawdzacz(cool_data));
 
 	} else {
-		printf("Masa wody wymagana do schlodzenia preta w %g sek.: %g\n", cool_data->tend , szukaj_bisekcyjnie(cool_data));	
+		printf("Masa wody wymagana do schlodzenia preta do tmeperatury %g w %g sek.: %g\n", cool_data->tempend ,cool_data->tend , szukaj_bisekcyjnie(cool_data));	
 	}
 	make_plot(out, cool_data );
 
