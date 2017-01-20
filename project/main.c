@@ -104,6 +104,9 @@ int main(int argc, char **argv){
 	} else {
 		printf("Masa wody wymagana do schlodzenia preta do tmeperatury %g w %g sek.: %g\n", cool_data->tempend ,cool_data->tend , szukaj_bisekcyjnie(cool_data));	
 	}
+
+	fclose( in );	
+
 	make_plot(out, cool_data );
 
 	return 0;

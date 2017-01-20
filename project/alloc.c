@@ -92,9 +92,20 @@ cool_t cw_gen( cool_t cool_data , char *cwplot ){
 
 	}
 
+	fclose ( in );
+
 	return cool_data;
 
 }
 
-		
+void freealloc( cool_t cool_data ){
+
+	free( cool_data->Y[1] );
+	free( cool_data->Y[0] );
+	free( cool_data->cw[1] );
+	free( cool_data->cw[0] );
+	free( cool_data->Y );
+	free( cool_data->cw );
+	
+}
 		
