@@ -1,5 +1,6 @@
 #include "wykreslnik.h"
 #include "struct.h"
+#include "alloc.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -32,6 +33,8 @@ void make_plot( char *out, cool_t t) {
 	fprintf(cmd, "replot");
 	
 	fclose(cmd);
+	
+	freealloc(t);
 	
 	execl("/usr/bin/gnuplot", "gnuplot", cmd_file, (char *) NULL);
 	

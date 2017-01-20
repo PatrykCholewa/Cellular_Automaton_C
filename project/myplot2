@@ -1,4 +1,4 @@
 set terminal png
 set output 'wykres.png'
-plot 'myplota@' with lines t 'temp. preta', 'myplot1?' with lines t 'temp. cieczy'
+plot 'myplot' with lines t 'temp. preta', 'myplot1' with lines t 'temp. cieczy'
 replot
