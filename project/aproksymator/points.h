@@ -9,6 +9,11 @@ typedef struct {
 		double *y;
 } points_t;
 
-int read_pts_failed ( FILE* inf, points_t *pts);
+int read_points_failed ( FILE* inf, points_t *pts);
+double points_min_x(points_t *points);
+double points_max_x(points_t *points);
+points_t * points_linspace(double a, double b, int n);
+
 
 #endif
+

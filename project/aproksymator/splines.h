@@ -1,23 +1,22 @@
-#ifndef SPLINES_H
-#define SPLINES_H
+fndef SPLINES_SPLINES_H_H
+#define SPLINES_SPLINES_H_H
 
-#include <stdio.h>
+#include "points.h"
+#include "gaus/piv_ge_solver.h"
+
+#include <stdlib.h>
 
 typedef struct {
-		int n;
-		double *x;
-		double *f;
-		double *f1;
-		double *f2;
-		double *f3;
+    int nbase;
+    double *c;
+    double *x;
 } spline_t;
 
-int alloc_spl( spline_t *spl, int n );
+spline_t * splines_approximate(points_t *points, int nbase);
+double splines_eval(spline_t * spline, double x);
 
-int  read_spl ( FILE *inf,  spline_t *spl );
+void free_spline(spline_t * spline);
 
-void  write_spl ( spline_t *spl, FILE * ouf );
 
-double value_spl( spline_t *spl, double x);
+#endif //SPLINES_SPLINES_H_H
 
-#endif
