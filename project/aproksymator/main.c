@@ -6,6 +6,7 @@
 int main(int argc, char ** argv) {
     points_t points;
     spline_t *spline;
+    points.n = 0;
     char * fname = argc > 1 ? argv[1] : "points.pt";
     FILE * fpoints = fopen(fname, "r");
     int nbase = argc >  2 ? atoi(argv[2]) : 4;
