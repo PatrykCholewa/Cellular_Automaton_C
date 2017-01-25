@@ -7,21 +7,20 @@
 #include "wykreslnik.h"
 #include "analizator_danych.h"
 #include "bisekcja.h"
+#include "aproksymator/splines.h"
+#include "aproksymator/points.h"
 #define TMP_SIZE 50
 
 int main(int argc, char **argv){
 
 	int opt;
 	FILE *in = NULL;
-	char *out = "wykres.png";
-	/*
 	FILE *cwfile = NULL;
-	char *cwfilename;
-	char stmp[TMP_SIZE];
-	char stmp2[TMP_SIZE];
-	*/
+	char *out = "wykres.png";
 	char bool3 = 0;
 	int ret = 0;
+	spline_t spl;
+	points_t pts;
 	
 	/*
 	Dodać obsługę błędów
@@ -47,10 +46,7 @@ int main(int argc, char **argv){
 				bool3 = 1;
 				break;
 			case 'w':
-				/*
-				cwfile = fopen( argv[optind] , "r" );
-				cwfilename = argv[optind];
-				*/
+				cwfile = fopen( argv[optind] ,"r" );
 				break;
 			default:
 				fprintf(stderr, "Błąd oflagowania!\n");
@@ -67,27 +63,21 @@ int main(int argc, char **argv){
 			exit(EXIT_FAILURE);
 		}
 	}
-	/*
+
 	if( cwfile == NULL ){
 		cwfile = fopen( "cw.cfg" , "r");
-		cwfilename = "cw.cfg";
 		if ( cwfile == NULL ){
-			fprintf (stderr , "Brak pliku z danymi, co do ciepła właściwego..\n");
+			fprintf (stderr , "Błąd pliku cw.\n");
 			exit(EXIT_FAILURE);
 		}
 	}
-	*/
-	
-	cool_data = add_const( cool_data , in );
-	
-	/*
-	
-	snprintf( stmp, TMP_SIZE , "%lf" , (double)cool_data->Yc * cool_data->dt*);
-	snprintf( stmp2, TMP_SIZE , "%d" , cool_data->Yc + 1);
-	
-	ret = execl( "./intrp","./intrp","-s","spl","-p",cwfilename,"-g","cwplot","-f","0","-t",stmp,"-n",stmp2,NULL);
 
-	*/
+	cool_data = add_const( cool_data , in );
+
+	spl.nbase = 0;
+	pts.n = 0;
+
+	read_points_failed( cwfile , &pts );
 
 	cool_data = cw_gen( cool_data , "cwplot" );
 	

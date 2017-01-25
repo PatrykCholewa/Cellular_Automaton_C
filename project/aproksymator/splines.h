@@ -18,5 +18,5 @@ double splines_eval(spline_t * spline, double x);
 void free_spline(spline_t * spline);
 
 
-#endif //SPLINES_SPLINES_H_H
+#endif /*SPLINES_SPLINES_H_H*/
 
