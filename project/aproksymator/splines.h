@@ -1,4 +1,4 @@
-fndef SPLINES_SPLINES_H_H
+#ifndef SPLINES_SPLINES_H_H
 #define SPLINES_SPLINES_H_H
 
 #include "points.h"
