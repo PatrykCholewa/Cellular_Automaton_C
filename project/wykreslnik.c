@@ -9,9 +9,9 @@
 
 void make_plot( char *out, cool_t t) {
 	int i;
-	char dat_file[6] = "myplot";
-	char dat2_file[7] = "myplot1";
-	char cmd_file[7] = "myplot2";
+	char dat_file[7] = "myplot";
+	char dat2_file[8] = "myplot1";
+	char cmd_file[8] = "myplot2";
 	/*mkstemp(dat_file);
 	mkstemp(dat2_file);
 	mkstemp(cmd_file);*/

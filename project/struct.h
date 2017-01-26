@@ -1,3 +1,4 @@
+#include "aproksymator/splines.h"
 #ifndef STRUCT_DEF
 typedef struct {
 	double A;
@@ -19,7 +20,7 @@ typedef struct {
 	  */
 	double tend;
 	double tempend;
-	double **cw;
+	spline_t *cw;
 	const_t stale;
 } elem_t, *cool_t;
 

@@ -4,7 +4,7 @@
 
 cool_t przebiegnij( cool_t cool_data);
 
-double cw( cool_t cool_data , int index); 
+double cw( cool_t cool_data , double T); 
 
 #define CZAS_DEF
 #endif

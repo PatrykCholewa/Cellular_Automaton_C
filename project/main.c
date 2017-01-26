@@ -19,15 +19,14 @@ int main(int argc, char **argv){
 	char *out = "wykres.png";
 	char bool3 = 0;
 	int ret = 0;
-	spline_t *spl;
-	points_t *pts;
+	points_t pts;
+	cool_t cool_data;
+	pts.n = 0;
 	
 	/*
 	Dodać obsługę błędów
 	*/
 
-	cool_t cool_data;
-	
 	cool_data = startalloc( cool_data );
 
 	while ((opt = getopt(argc, argv, "cipew:")) != -1){
@@ -74,16 +73,9 @@ int main(int argc, char **argv){
 
 	cool_data = add_const( cool_data , in );
 
-	spl = malloc( sizeof (*spl) );
-	pts = malloc( sizeof (*pts) );
+	read_points_failed( cwfile , &pts );
 
-	pts->n = 0;
-
-	read_points_failed( cwfile , pts );
-
-	spl = splines_approximate( pts , 8 );
-
-	cool_data = cw_gen( cool_data , "cwplot" );
+	cool_data->cw = splines_approximate( &pts , 4 );
 	
 	if (ret == -1 ){
 		fprintf( stderr , "Problemy z użyciem pliku do wyliczenia cw.\n");
@@ -100,7 +92,7 @@ int main(int argc, char **argv){
 	}
 
 	fclose( in );	
-
+	
 	make_plot(out, cool_data );
 
 	return 0;

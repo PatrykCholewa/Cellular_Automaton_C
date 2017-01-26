@@ -1,8 +1,6 @@
-/*
 //
 // Created by szmurlor on 25.01.17.
 //
-*/
 
 #include "splines.h"
 
@@ -67,14 +65,9 @@ double _fi(double x, double *hx, double h) {
 double fi_ab (double a, double b, int nb, int i, double x)
 {
     double h = (b - a) / (nb - 1);
-    int hi[5]/* = { i - 2, i - 1, i, i + 1, i + 2 }*/;
+    int hi[5] = { i - 2, i - 1, i, i + 1, i + 2 };
     double hx[5];
     int j;
-    hi[0] = i - 2;
-    hi[1] = i - 1;
-    hi[2] = i;
-    hi[3] = i + 1;
-    hi[4] = i + 2;
 
     for (j = 0; j < 5; j++)
         hx[j] = a + h * hi[j];
@@ -89,7 +82,7 @@ double fi_ab (double a, double b, int nb, int i, double x)
  */
 double fi_xih (double xi, double h, double x)
 {
-    /* double h3 = h * h * h; */
+    double h3 = h * h * h;
     int hi[5] = { -2, -1, 0, 1, 2 };
     double hx[5];
     int j;
