@@ -70,10 +70,6 @@ cool_t add_const( cool_t cool_data , FILE *in ){
 		}
 	}
 	
-	/*
-	obsługa błędów
-	*/
-	
 	return cool_data;
 }
 

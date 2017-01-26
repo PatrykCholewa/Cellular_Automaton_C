@@ -21,10 +21,6 @@ int main(int argc, char **argv){
 	points_t pts;
 	cool_t cool_data;
 	pts.n = 0;
-	
-	/*
-	Dodać obsługę błędów
-	*/
 
 	cool_data = startalloc( cool_data );
 
