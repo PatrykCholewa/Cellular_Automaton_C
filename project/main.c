@@ -5,7 +5,6 @@
 #include "alloc.h"
 #include "czas.h"
 #include "wykreslnik.h"
-#include "analizator_danych.h"
 #include "bisekcja.h"
 #include "aproksymator/splines.h"
 #include "aproksymator/points.h"
@@ -84,11 +83,11 @@ int main(int argc, char **argv){
 	
 	if( bool3 == 0 ){
 		cool_data = przebiegnij( cool_data );
-		printf("Temperatura koncowa: %g\n", cool_data->Y[0][cool_data->Yc]);
-		printf("Czas po ktorym pret osiagnie dana temperature: %g\n", wynikosprawdzacz(cool_data));
+		printf("\nTemperatura koncowa: %gC\n", cool_data->Y[0][cool_data->Yc]);
+		printf("Czas, po ktorym pret osiagnie dana temperature: %gs\n\n", wynikosprawdzacz(cool_data));
 
 	} else {
-		printf("Masa wody wymagana do schlodzenia preta do tmeperatury %g w %g sek.: %g\n", cool_data->tempend ,cool_data->tend , szukaj_bisekcyjnie(cool_data));	
+		printf("\nMasa wody wymagana do schlodzenia preta do temperatury %gC: %gkg\n\n", cool_data->tempend, szukaj_bisekcyjnie(cool_data));
 	}
 
 	fclose( in );	

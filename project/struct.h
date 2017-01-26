@@ -18,7 +18,7 @@ typedef struct {
 	/**
 	  *krok czasowy
 	  */
-	double tend;
+	double tempeps;
 	double tempend;
 	spline_t *cw;
 	const_t stale;

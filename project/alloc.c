@@ -24,7 +24,7 @@ cool_t startalloc( cool_t cool_data , int max_iter ){
 	cool_data->stale.mb = 0.4;
 	cool_data->stale.mw = 2.5;
 	cool_data->stale.cb = 0.22;
-	cool_data->tend = 0.4;
+	cool_data->tempeps = 0.25;
 	cool_data->tempend = 200;
 	cool_data->Yc = 1000;
 	cool_data->dt = 0.001;	
@@ -56,8 +56,8 @@ cool_t add_const( cool_t cool_data , FILE *in ){
 		if( strcmp( s , "h" ) == 0 ){
 			cool_data->stale.h = v;
 		}
-		if( strcmp( s , "tend" ) == 0 ){
-			cool_data->tend = v;
+		if( strcmp( s , "tempeps" ) == 0 ){
+			cool_data->tempeps = v;
 		}
 		if( strcmp( s , "tempend" ) == 0 ){
 			cool_data->tempend = v;
