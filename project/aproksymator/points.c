@@ -69,8 +69,9 @@ points_t * points_linspace(double a, double b, int n) {
     int i;
     points_t * points = (points_t*) malloc(sizeof(points_t));
     if (points != NULL) {
-        points->n = n;
-        double h = (b - a) / n;
+        double h;
+	points->n = n;
+        h = (b - a) / n;
         points->x = (double*) malloc(n * sizeof(double));
         if (points->x == NULL) {
             free(points);
