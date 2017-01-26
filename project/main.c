@@ -19,8 +19,8 @@ int main(int argc, char **argv){
 	char *out = "wykres.png";
 	char bool3 = 0;
 	int ret = 0;
-	spline_t spl;
-	points_t pts;
+	spline_t *spl;
+	points_t *pts;
 	
 	/*
 	Dodać obsługę błędów
@@ -74,10 +74,14 @@ int main(int argc, char **argv){
 
 	cool_data = add_const( cool_data , in );
 
-	spl.nbase = 0;
-	pts.n = 0;
+	spl = malloc( sizeof (*spl) );
+	pts = malloc( sizeof (*pts) );
 
-	read_points_failed( cwfile , &pts );
+	pts->n = 0;
+
+	read_points_failed( cwfile , pts );
+
+	spl = splines_approximate( pts , 8 );
 
 	cool_data = cw_gen( cool_data , "cwplot" );
 	
