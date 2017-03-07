@@ -1,0 +1,22 @@
+typedef struct {
+	int nbrhd;	   /* 	typ sąsiedztwa (4,8,/inne/) */
+	int bound;	   /*	typ warunków brzegowych (0,1,/inne/)
+			   */
+	int save; 	   /*  sposób zapisu (1,/więcej/) */
+	char *out	   /* nazwa pliku wyjścia */
+	int intrvl;	   /* interwał czasowy */
+} cfg_t;
+
+typedef struct {
+	char **board; 	   /*	wiersze tablicy to wiersze komórek
+ 				kolumny tablicy zawierają indeksy
+				kolumn komórek wierszy
+				zerowy wiersz zawiera
+				tablica jest mxn
+			   */
+	int *colsize;	   /* 	ilość elementów w kolumnach **board */
+	int m;		   /* 	ilość wierszy planszy */
+	int n;		   /* 	ilość kolumn planszy */
+	cfg_t cfg;
+} *map_t;
+
