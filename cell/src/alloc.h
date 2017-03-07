@@ -1,7 +1,11 @@
 #include"struct.h"
+#include<stdio.h>
 #include<stdlib.h>
 
-map_t inittalloc (map_t map );
+#ifndef ALLOC_CONTROL
+#define ALLOC_CONTROL
+
+map_t initalloc (map_t map );
 
 map_t boardalloc( map_t map );
 
@@ -11,4 +15,4 @@ map_t add_start( map_t map , FILE *in );
 
 void freealloc( map_t map );
 
-
+#endif

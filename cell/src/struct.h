@@ -1,9 +1,13 @@
+#ifndef STRUCT_CONTROL
+#define STRUCT_CONTROL
+
+
 typedef struct {
 	int nbrhd;	   /* 	typ sąsiedztwa (4,8,/inne/) */
 	int bound;	   /*	typ warunków brzegowych (0,1,/inne/)
 			   */
 	int save; 	   /*  sposób zapisu (1,/więcej/) */
-	char *out	   /* nazwa pliku wyjścia */
+	char *out;	   /* nazwa pliku wyjścia */
 	int intrvl;	   /* interwał czasowy */
 } cfg_t;
 
@@ -20,3 +24,4 @@ typedef struct {
 	cfg_t cfg;
 } *map_t;
 
+#endif
