@@ -32,7 +32,7 @@ int main(int argc , char **argv ){
 	
 	map = initalloc( map );
 	map = add_cfg( map , in_set );
-	map = boardalloc( map );
+	//map = boardalloc( map ); error
 	//map = add_map( map );
 
 	fclose( in_set );
