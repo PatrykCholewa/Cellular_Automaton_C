@@ -22,8 +22,8 @@ int main(int argc , char **argv ){
 	}
 
 	map = initalloc( map );
-	map = add_cfg( map , in_set );
-//	map = boardalloc( map );
+	map = add_cfg( map , in_set ); /*error?*/
+	map = boardalloc( map );
 	//map = add_map( map );
 
 	fclose( in_set );
