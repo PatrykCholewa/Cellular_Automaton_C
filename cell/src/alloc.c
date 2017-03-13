@@ -17,7 +17,7 @@ map_t initalloc (map_t map ){
 	map->cfg.save = 50;
 	map->cfg.intrvl = 5;
 	
-	map->cfg.out = malloc( 4 * sizeof (map->cfg.out) );
+	map->cfg.out = malloc( MAX_FILENAME_SIZE * sizeof (map->cfg.out) );
 	map->cfg.out = "out";
 
 	return map;
@@ -27,20 +27,14 @@ map_t initalloc (map_t map ){
 map_t boardalloc( map_t map ){
 	
 	int i;
-	printf("0\n");	
-	map->board = malloc( map->m * sizeof ( char * ) );
-	printf("b\n");
-	map->colsize = malloc( map->m * sizeof ( int ) );
-	printf("cs\n");
+
+	map->board = malloc( map->m * sizeof ( *map->board ) );
+	map->colsize = malloc( map->m * sizeof ( map->colsize ) );
+
 	for( i = 0 ; i < map->m ; i++ ){
-		printf("%i\n" , i);
-		map->board[i] = malloc( map->n * sizeof ( char ) );
+		map->board[i] = malloc( map->n * sizeof ( map->board[i] ) );
 		map->colsize[i] = 0;
 	}
-	printf("3\n");
-	map->board[3][3] = 10;
-	printf("p\n");
-	printf( "%i\n" , map->board[3][3] );
 
 	return map;
 }
@@ -93,11 +87,11 @@ map_t add_cfg( map_t map , FILE *in ){
 		}
 	
 	}
+
+	return map;
 	
 }
 
 //map_t add_map( map_t map , FILE *in );
 
 //void freealloc( map_t map );
-
-
