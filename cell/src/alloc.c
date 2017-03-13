@@ -95,5 +95,3 @@ map_t add_cfg( map_t map , FILE *in ){
 //map_t add_map( map_t map , FILE *in );
 
 //void freealloc( map_t map );
-
-
