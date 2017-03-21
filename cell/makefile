@@ -3,7 +3,7 @@ all : src/main.c src/struct.h src/alloc.o
 	mv cellsim ./bin
 
 test : all
-	./bin/cellsim
+	./bin/cellsim ./bin/map.cfg ./bin/set.cfg
 
 src/alloc.o : src/alloc.c src/alloc.h
 
