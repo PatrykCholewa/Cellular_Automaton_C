@@ -9,9 +9,16 @@
 int main(int argc , char **argv ){
 
 	map_t map;
-//	FILE *in_map = argc > 1 ? fopen( argv[1] , "r" ) : fprintf( stderr , "No map file to read given!" );
-	FILE *in_set = argc > 2 ? fopen( argv[2] , "r" ) : fprintf( stderr , "No set file to read given!" );
+//	FILE *in_map;
+	FILE *in_set;
 
+	if( argc > 2 ){
+//		in_map = fopen( argv[1] , "r" );
+		in_set = fopen( argv[2] , "r" );
+	} else {
+		fprintf( stderr , "Too less arguments!" );
+	}
+	
 //	if( in_map == NULL ){
 //		fprintf ( stderr , "File reading error!\n");
 //		exit( EXIT_FAILURE );
@@ -23,7 +30,7 @@ int main(int argc , char **argv ){
 	}
 
 	map = initalloc( map );
-	map = add_cfg( map , in_set ); /*error?*/
+	map = add_cfg( map , in_set );
 	map = boardalloc( map );
 	//map = add_map( map );
 
