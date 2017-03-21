@@ -6,3 +6,8 @@ test : all
 	./bin/cellsim
 
 src/alloc.o : src/alloc.c src/alloc.h
+
+.PHONY : clean
+
+clean :
+	rm ./src/*.o
