@@ -40,7 +40,7 @@ int main(int argc , char **argv ){
 	
 	//map = iter_gen( map );
 
-	//freealloc( map );
+	freealloc( map );
 
 	return 0;
 

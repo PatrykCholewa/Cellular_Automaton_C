@@ -29,7 +29,6 @@ map_t boardalloc( map_t map ){
 	int i;
 
 	map->board = malloc( map->m * sizeof ( *map->board ) );
-	map->colsize = malloc( map->m * sizeof ( map->colsize ) );
 
 	for( i = 0 ; i < map->m ; i++ ){
 		int j;
@@ -112,4 +111,16 @@ map_t add_map( map_t map , FILE *in ){
 
 }
 
-//void freealloc( map_t map );
+void freealloc( map_t map ){
+
+	int i;
+	for( i = 0 ; i < map->m ; i++ ){
+		free( map->board[i]);
+	}
+	
+	free( map->board );
+//	free( map->cfg.out );	
+	free( map );
+	
+	return ;
+}
