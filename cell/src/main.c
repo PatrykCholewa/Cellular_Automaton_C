@@ -9,8 +9,8 @@
 int main(int argc , char **argv ){
 
 	map_t map;
-//	FILE *in_map = argc > 1 ? fopen( argv[1] , "r" ) : fopen( "./bin/map.cfg" , "r" );
-	FILE *in_set = argc > 2 ? fopen( argv[2] , "r" ) : fopen( "./bin/set.cfg" , "r" );
+//	FILE *in_map = argc > 1 ? fopen( argv[1] , "r" ) : fprintf( stderr , "No map file to read given!" );
+	FILE *in_set = argc > 2 ? fopen( argv[2] , "r" ) : fprintf( stderr , "No set file to read given!" );
 
 //	if( in_map == NULL ){
 //		fprintf ( stderr , "File reading error!\n");
