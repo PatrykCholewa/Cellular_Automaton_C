@@ -25,7 +25,7 @@ int main(int argc , char **argv ){
 	map = initalloc( map );
 	map = add_cfg( map , in );
 
-	close( in );
+	fclose( in );
 	in = fopen( argv[2] , "r" );
 
 	if( in == NULL ){
@@ -34,7 +34,7 @@ int main(int argc , char **argv ){
 	}
 
 	map = boardalloc( map );
-	//map = add_map( map , in );
+	map = add_map( map , in );
 
 	fclose( in );
 	
