@@ -29,11 +29,13 @@ map_t boardalloc( map_t map ){
 	int i;
 
 	map->board = malloc( map->m * sizeof ( *map->board ) );
-	map->colsize = malloc( map->m * sizeof ( map->colsize ) );
 
 	for( i = 0 ; i < map->m ; i++ ){
+		int j;
 		map->board[i] = malloc( map->n * sizeof ( map->board[i] ) );
-		map->colsize[i] = 0;
+		for ( j = 0 ; j < map->n ; j++ ){
+			map->board[i][j] = 0;
+		}
 	}
 
 	return map;
@@ -92,6 +94,33 @@ map_t add_cfg( map_t map , FILE *in ){
 	
 }
 
-//map_t add_map( map_t map , FILE *in );
+map_t add_map( map_t map , FILE *in ){
 
-//void freealloc( map_t map );
+	int a;
+	int b;
+	while( fscanf( in , "%d %d" , &a , &b ) != EOF ){
+		if( a < map->m && b < map->n ){
+			map->board[a][b] = 1;
+		} else {
+			fprintf( stderr , "Point (%d , %d) out of bounds!\n" , a , b);
+			printf("1\n");
+		} 
+	} 
+	
+	return map;
+
+}
+
+void freealloc( map_t map ){
+
+	int i;
+	for( i = 0 ; i < map->m ; i++ ){
+		free( map->board[i]);
+	}
+	
+	free( map->board );
+//	free( map->cfg.out );	
+	free( map );
+	
+	return ;
+}
