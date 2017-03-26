@@ -1,4 +1,10 @@
 #include "save.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdarg.h>
+#include <png.h>
 
 int scale(int m, int n) {
 	return 1;

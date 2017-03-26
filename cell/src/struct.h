@@ -18,6 +18,7 @@ typedef struct {
 				zerowy wiersz zawiera
 				tablica jest mxn
 			   */
+	char **old_board;  /* 	jak wyżej tylko dla poprzedniej generacji */
 	int m;		   /* 	ilość wierszy planszy */
 	int n;		   /* 	ilość kolumn planszy */
 	cfg_t cfg;

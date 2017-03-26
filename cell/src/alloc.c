@@ -29,10 +29,12 @@ map_t boardalloc( map_t map ){
 	int i;
 
 	map->board = malloc( map->m * sizeof ( *map->board ) );
+	map->old_board = malloc( map->m * sizeof ( *map->old_board ) );
 
 	for( i = 0 ; i < map->m ; i++ ){
 		int j;
 		map->board[i] = malloc( map->n * sizeof ( map->board[i] ) );
+		map->old_board[i] = malloc( map->n * sizeof (map->board[i] ) );
 		for ( j = 0 ; j < map->n ; j++ ){
 			map->board[i][j] = 0;
 		}
@@ -115,10 +117,12 @@ void freealloc( map_t map ){
 
 	int i;
 	for( i = 0 ; i < map->m ; i++ ){
-		free( map->board[i]);
+		free( map->board[i] );
+		free( map->old_board[i] );
 	}
 	
 	free( map->board );
+	free( map->old_board );
 //	free( map->cfg.out );	
 	free( map );
 	
