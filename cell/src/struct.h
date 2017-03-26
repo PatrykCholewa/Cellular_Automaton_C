@@ -18,7 +18,6 @@ typedef struct {
 				zerowy wiersz zawiera
 				tablica jest mxn
 			   */
-//	int *colsize;	   /* 	ilość elementów w kolumnach **board */
 	int m;		   /* 	ilość wierszy planszy */
 	int n;		   /* 	ilość kolumn planszy */
 	cfg_t cfg;

@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include"struct.h"
 #include"alloc.h"
-//#include"gen.h"
+#include"gen.h"
 
 #define FILE_NAME_SIZE 16
 
@@ -38,7 +38,7 @@ int main(int argc , char **argv ){
 
 	fclose( in );
 	
-	//map = iter_gen( map );
+	map = iter_gen( map );
 
 	freealloc( map );
 
