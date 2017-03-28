@@ -1,5 +1,5 @@
-all : src/main.c src/struct.h src/alloc.o src/gen.o src/life.o src/nbr.o
-	gcc -Wall -o cellsim src/main.c src/alloc.o src/gen.o src/life.o src/nbr.o #NIE WIEM, CZY NIE WYSTĄPI PROBLEM PRZY -lpng I OSOBNYM save.o
+all : src/main.c src/struct.h src/alloc.o src/gen.o src/life.o src/nbr.o src/bound.o
+	gcc -Wall -o cellsim src/main.c src/alloc.o src/gen.o src/life.o src/nbr.o src/bound.o #NIE WIEM, CZY NIE WYSTĄPI PROBLEM PRZY -lpng I OSOBNYM save.o
 	mv cellsim ./bin
 
 test : all
@@ -14,6 +14,8 @@ src/save.o : src/save.c src/save.h
 src/life.o : src/life.c src/life.h
 
 src/nbr.o : src/nbr.c src/nbr.h
+
+src/bound.o : src/bound.c src/bound.h
 
 .PHONY : clean
 
