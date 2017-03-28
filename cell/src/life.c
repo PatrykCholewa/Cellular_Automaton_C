@@ -1,10 +1,10 @@
 #include "struct.h"
-//#include "nrb.h"
+#include "nbr.h"
 
 int cells_next_state(map_t map, int x, int y ){
 
 	const char cstate = map->board[x][y];
-	int nbr = /* num_of_neighbours( map , x , y ); */0;
+	int nbr = num_of_neighbours( map , x , y );
 	
 	if( cstate == 0 ){
 		if ( nbr == 3 ){
