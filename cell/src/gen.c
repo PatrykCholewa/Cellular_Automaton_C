@@ -1,7 +1,7 @@
 #include <string.h>
 #include "struct.h"
 //#include "save.h"
-//#include "life.h"
+#include "life.h"
 
 map_t next_gen( map_t map ){
 
@@ -16,7 +16,7 @@ map_t next_gen( map_t map ){
 				memcpy( map->old_board[k] , map->board[k] , map->n * sizeof ( map->board[k] ) );
 			}
 			
-//			map->board[i][j] = map->board[i][j] + cells_next_state( map , i , j );
+			map->board[i][j] = map->board[i][j] + cells_next_state( map , i , j );
 
 		}
 	} 			
