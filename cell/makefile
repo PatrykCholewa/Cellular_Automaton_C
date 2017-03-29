@@ -3,7 +3,6 @@ all : src/main.c src/struct.h src/alloc.o src/gen.o src/life.o src/nbr.o src/bou
 	mv cellsim ./bin
 
 test : all
-	# ./bin/cellsim ./bin/set.cfg ./bin/map.cfg
 	./bin/cellsim ./in/s_glider.cfg ./in/m_glider.cfg
 	./bin/cellsim ./in/stdset.cfg ./in/testmap.cfg
 
