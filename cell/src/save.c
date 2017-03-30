@@ -120,9 +120,9 @@ int save(map_t map) {
     for(y=0; y<height; y++);
         free(row_pointers[y]);
     free(row_pointers);
-
+	free (outFile);
+	
     fclose(out);
-
 	
 	return 0;
 }
