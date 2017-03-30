@@ -7,6 +7,12 @@
 #include <png.h>
 
 int scale(int m, int n) {
+	if(m*n<=300) {
+		return 5;
+	}
+	if(m*n<=14400) {
+		return 3;
+	}
 	return 1;
 }
 
@@ -22,7 +28,6 @@ int save(map_t map) {
 	png_byte bit_depth;
 	png_structp png_ptr;
 	png_infop info_ptr;
-	//int passesNumber;
 	png_bytep *row_pointers;
 	
 	bit_depth = 8;
@@ -37,8 +42,14 @@ int save(map_t map) {
 			height = map->n;
 			break;
 		case 3:
+            save_scalex3(row_pointers, map);
+            width = 3*map->m;
+            height = 3*map->n;
 			break;
 		case 5:
+            save_scalex5(row_pointers, map);
+            width = 5*map->m;
+            height = 5*map->n;
 			break;
 	}
 	
@@ -97,8 +108,108 @@ void save_scalex1(png_bytep *rows, map_t map) {
 
 void save_scalex3(png_bytep *rows, map_t map) {
 
+    int x, y, y_tmp;
+    rows = (png_bytep*) malloc(sizeof(png_bytep)*map->m*3);
+    for(y=0; y<map->n; y++)
+        rows[y] = (png_byte*)malloc(sizeof(png_byte)*map->n*3);
+	
+	y_tmp = 0;
+    for(y=0; y<map->n*3; y+=3) {
+		int x_tmp = 0;
+        png_byte *row = rows[y];
+		png_byte *row2 = rows[y+1];
+		png_byte *row3 = rows[y+2];
+        for(x=0; x<map->m*3; x+=3) {
+            row[x] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+			row[x+1] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+			row[x+2] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+			x_tmp++;
+        }
+		x_tmp = 0;
+        for(x=0; x<map->m*3; x+=3) {
+            row2[x] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row2[x+1] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row2[x+2] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            x_tmp++;
+		}
+		x_tmp = 0;
+        for(x=0; x<map->m*3; x+=3) {
+            row3[x] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row3[x+1] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row3[x+2] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+			x_tmp++;
+        }
+		y_tmp++;
+    }
+
+
 }
 
 void save_scalex5(png_bytep *rows, map_t map) {
+
+    int x, y, y_tmp;
+    rows = (png_bytep*) malloc(sizeof(png_bytep)*map->m*5);
+    for(y=0; y<map->n; y++)
+        rows[y] = (png_byte*)malloc(sizeof(png_byte)*map->n*5);
+
+    y_tmp = 0;
+    for(y=0; y<map->n*5; y+=5) {
+        int x_tmp = 0;
+        png_byte *row = rows[y];
+        png_byte *row2 = rows[y+1];
+        png_byte *row3 = rows[y+2];
+		png_byte *row4 = rows[y+3];
+        png_byte *row5 = rows[y+4];
+
+		
+        for(x=0; x<map->m*5; x+=5) {
+            row[x] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row[x+1] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row[x+2] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+			row[x+3] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+			row[x+4] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            x_tmp++;
+        }
+        x_tmp = 0;
+        for(x=0; x<map->m*5; x+=5) {
+            row2[x] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row2[x+1] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row2[x+2] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row2[x+3] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row2[x+4] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+			x_tmp++;
+        }
+        x_tmp = 0;
+        for(x=0; x<map->m*5; x+=5) {
+            row3[x] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row3[x+1] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row3[x+2] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row3[x+3] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row3[x+4] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            x_tmp++;
+        }
+		x_tmp = 0;
+        for(x=0; x<map->m*5; x+=5) {
+            row4[x] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row4[x+1] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row4[x+2] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row4[x+3] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row4[x+4] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            x_tmp++;
+        }
+		x_tmp = 0;
+        for(x=0; x<map->m*5; x+=5) {
+            row5[x] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row5[x+1] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row5[x+2] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row5[x+3] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            row5[x+4] = map->board[x_tmp][y_tmp] == '\0' ? 0 : 255;
+            x_tmp++;
+        }
+		
+        y_tmp++;
+    }
+
+
 
 }
