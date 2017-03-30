@@ -16,6 +16,40 @@ int scale(int m, int n) {
 	return 1;
 }
 
+int numOfDigits(int n) {
+    int digits = 0;
+    if(n == 0) {
+        return 1;
+    }
+    while(n != 0) {
+        n/=10;
+        digits++;
+    }
+    return digits;
+}
+
+char* addNumToName(char *s) {
+    static int number = 0;
+    int i;
+    int tmp = number;
+    int digits = numOfDigits(number);
+    char *ns = malloc((strlen(s)+digits+1)*sizeof (char));
+    for(i=digits-1; i>=0; i--) {
+        int d = tmp % 10;
+        ns[i] = d+'0';
+        tmp /= 10;
+    }
+    ns[digits] = '_';
+    i = 0;
+    while(s[i] != '\0') {
+        ns[digits+i+1] = s[i];
+        i++;
+    }
+    ns[digits+i+1] = '\0';
+    number++;
+    return ns;
+}
+
 void save_scalex1(png_bytep *rows, map_t map);
 void save_scalex3(png_bytep *rows, map_t map);
 void save_scalex5(png_bytep *rows, map_t map);
@@ -29,6 +63,7 @@ int save(map_t map) {
 	png_structp png_ptr;
 	png_infop info_ptr;
 	png_bytep *row_pointers;
+	char *outFile;
 	
 	bit_depth = 8;
 	color_type = PNG_COLOR_TYPE_GRAY;
@@ -52,8 +87,10 @@ int save(map_t map) {
             height = 5*map->n;
 			break;
 	}
+
+	outFile = addNumToName(map->cfg.out);
 	
-	FILE *out = fopen(map->cfg.out, "wb");
+	FILE *out = fopen(outFile, "wb");
 
 	if(out == NULL)
 		return -1;
