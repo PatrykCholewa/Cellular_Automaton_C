@@ -68,11 +68,9 @@ map_t add_cfg( map_t map , FILE *in ){
 			if( strcmp( v , "0" ) == 0 ){
 				map->cfg.bound = 0;
 			}
-			/*
 			if( ( strcmp( v , "-1" ) == 0 ) || ( strcmp( v , "infinite" ) == 0 )  ){
 				map->cfg.bound = -1;
 			}
-			*/
 		}		
 		if( strcmp( s , "save" ) == 0 ){
 			map->cfg.save = atoi(v);
