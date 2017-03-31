@@ -50,9 +50,9 @@ char* addNumToName(char *s) {
     return ns;
 }
 
-void save_scalex1(png_bytep *rows, map_t map);
-void save_scalex3(png_bytep *rows, map_t map);
-void save_scalex5(png_bytep *rows, map_t map);
+png_bytep* save_scalex1(png_bytep *rows, map_t map);
+png_bytep* save_scalex3(png_bytep *rows, map_t map);
+png_bytep* save_scalex5(png_bytep *rows, map_t map);
 
 int save(map_t map) {
 	int x, y;
@@ -72,17 +72,17 @@ int save(map_t map) {
 
 	switch(scl) {
 		case 1:
-			save_scalex1(row_pointers, map);
+			row_pointers = save_scalex1(row_pointers, map);
 			width = map->m;
 			height = map->n;
 			break;
 		case 3:
-            save_scalex3(row_pointers, map);
+            row_pointers = save_scalex3(row_pointers, map);
             width = 3*map->m;
             height = 3*map->n;
 			break;
 		case 5:
-            save_scalex5(row_pointers, map);
+            row_pointers = save_scalex5(row_pointers, map);
             width = 5*map->m;
             height = 5*map->n;
 			break;
@@ -127,8 +127,7 @@ int save(map_t map) {
 	return 0;
 }
 
-void save_scalex1(png_bytep *rows, map_t map) {
-	
+png_bytep* save_scalex1(png_bytep *rows, map_t map) {
 	int x, y;
     rows = (png_bytep*) malloc(sizeof(png_bytep)*map->m);
     for(y=0; y<map->n; y++)
@@ -140,10 +139,11 @@ void save_scalex1(png_bytep *rows, map_t map) {
             row[x] = map->board[x][y] == '\0' ? 0 : 255;
         }
     }
-
+	
+	return rows;
 }
 
-void save_scalex3(png_bytep *rows, map_t map) {
+png_bytep* save_scalex3(png_bytep *rows, map_t map) {
 
     int x, y, y_tmp;
     rows = (png_bytep*) malloc(sizeof(png_bytep)*map->m*3);
@@ -179,10 +179,10 @@ void save_scalex3(png_bytep *rows, map_t map) {
 		y_tmp++;
     }
 
-
+	return rows;
 }
 
-void save_scalex5(png_bytep *rows, map_t map) {
+png_bytep* save_scalex5(png_bytep *rows, map_t map) {
 
     int x, y, y_tmp;
     rows = (png_bytep*) malloc(sizeof(png_bytep)*map->m*5);
@@ -247,6 +247,5 @@ void save_scalex5(png_bytep *rows, map_t map) {
         y_tmp++;
     }
 
-
-
+	return rows;
 }
