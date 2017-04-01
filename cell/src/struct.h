@@ -9,6 +9,7 @@ typedef struct {
 	int save; 	   /*  sposób zapisu (1,/więcej/) */
 	char *out;	   /* nazwa pliku wyjścia */
 	int intrvl;	   /* interwał czasowy */
+	char live;	   /* czy na żywo */
 } cfg_t;
 
 typedef struct {

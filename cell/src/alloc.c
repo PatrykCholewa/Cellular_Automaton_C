@@ -16,6 +16,7 @@ map_t initalloc (map_t map ){
 	map->cfg.bound = 0;
 	map->cfg.save = 50;
 	map->cfg.intrvl = 5;
+	map->cfg.live = 0;
 	
 	map->cfg.out = malloc( MAX_FILENAME_SIZE * sizeof (map->cfg.out) );
 	map->cfg.out = "out";
@@ -86,6 +87,11 @@ map_t add_cfg( map_t map , FILE *in ){
 		}
 		if( strcmp( s , "n" ) == 0 ){
 			map->n = atoi(v);
+		}
+		if( strcmp( s , "live" ) == 0 ){
+			if( v = "yes" ){
+				map->cfg.live = 1;
+			}
 		}
 	
 	}

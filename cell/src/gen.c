@@ -2,7 +2,7 @@
 #include "struct.h"
 #include "save.h"
 #include "life.h"
-//#include "live.h"
+#include "live.h"
 
 map_t next_gen( map_t map ){
 
@@ -33,19 +33,21 @@ map_t iter_gen( map_t map ){
 
 //	map = save( map );
 
-//	print_board ( map );
+	if( map->cfg.live == 1){
+		print_board ( map );
+	}
 
 	for( i = 0 ; i < map->cfg.save ; i++ ){
 	
 		for ( j = 0 ; j < map->cfg.intrvl ; j++ ){
 
 			map = next_gen( map );
-
-//			print_board ( map );
+	
+			if( map->cfg.live == 1){
+				print_board ( map );
+			}
 
 		}
-
-//		print_board ( map );
 			
 //		map = save ( map );
 
