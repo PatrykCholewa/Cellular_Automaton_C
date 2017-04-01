@@ -36,7 +36,7 @@ int dead_bound( map_t map , int x , int y){
 		return 0;
 	}
 	
-	return map->board[x][y];
+	return map->old_board[x][y];
 
 }
 
@@ -55,7 +55,7 @@ int live_bound( map_t map , int x , int y){
 		return 1;
 	}
 	
-	return map->board[x][y];
+	return map->old_board[x][y];
 
 }
 
@@ -74,7 +74,7 @@ int infinitive_bound( map_t map , int x , int y){
 		y = y + map->n;
 	}
 	
-	return map->board[x][y];
+	return map->old_board[x][y];
 
 
 }

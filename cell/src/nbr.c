@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 int neumann_neighbourhood( map_t map , int x , int y ){
-	
+
 	int sum = 0;
 	
 	sum = sum + state_check( map , x + 1 , y );

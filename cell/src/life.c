@@ -3,7 +3,7 @@
 
 int cells_next_state(map_t map, int x, int y ){
 
-	const char cstate = map->board[x][y];
+	char cstate = map->board[x][y];
 	int nbr = num_of_neighbours( map , x , y );
 	
 	if( cstate == 0 ){
@@ -18,6 +18,5 @@ int cells_next_state(map_t map, int x, int y ){
 		} else {
 			return -1;
 		}
-	}
-
+	} 
 }
