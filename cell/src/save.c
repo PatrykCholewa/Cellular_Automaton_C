@@ -57,12 +57,19 @@ void save_scalex3(map_t map);
 void save_scalex5(map_t map);
 
 int save(map_t map) {
+	static int first = 1;
 	char *outFile;
 	char *command;
 	int scl;
 	
 	scl = scale(map->m, map->n);
-
+	
+	if(first == 1) {
+		system("rm -R out");
+		system("mkdir out");
+		first = 0;
+	}
+	
 	switch(scl) {
 		case 1:
 			save_scalex1(map);
@@ -89,8 +96,6 @@ int save(map_t map) {
 
 void save_scalex1(map_t map) {
 	int x, y;
-	system("rm _r out");
-	system("mkdir out");
 	FILE *tmp_out = fopen("out/cellsim_output_tmp.pbm", "w");
 	
 	fprintf(tmp_out, "P1\n%d %d\n", map->m, map->n);
@@ -107,8 +112,6 @@ void save_scalex1(map_t map) {
 
 void save_scalex3(map_t map) {
     int x, y;
-    system("rm _r out");
-    system("mkdir out");
     FILE *tmp_out = fopen("out/cellsim_output_tmp.pbm", "w");
 
     fprintf(tmp_out, "P1\n%d %d\n", 3*map->m, 3*map->n);
@@ -136,8 +139,6 @@ void save_scalex3(map_t map) {
 
 void save_scalex5(map_t map) {
     int x, y;
-    system("rm _r out");
-    system("mkdir out");
     FILE *tmp_out = fopen("out/cellsim_output_tmp.pbm", "w");
 
     fprintf(tmp_out, "P1\n%d %d\n", 5*map->m, 5*map->n);
