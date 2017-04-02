@@ -3,16 +3,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdarg.h>
-#include <png.h>
 
 int scale(int m, int n) {
-	if(m*n<=300) {
+	/*if(m*n<=300) {
 		return 5;
 	}
 	if(m*n<=14400) {
 		return 3;
-	}
+	}*/
 	return 1;
 }
 
@@ -50,97 +48,65 @@ char* addNumToName(char *s) {
     return ns;
 }
 
-png_bytep* save_scalex1(png_bytep *rows, map_t map);
-png_bytep* save_scalex3(png_bytep *rows, map_t map);
-png_bytep* save_scalex5(png_bytep *rows, map_t map);
+char* createCommand(char *c) {
+	char command_base[40] = "convert out/cellsim_output_tmp.pbm out/";
+	char *command = malloc(strlen(command_base)+strlen(c)+1);
+	strcpy(command, command_base);
+	strcat(command, command_base);
+	return command;
+}
+
+void save_scalex1(map_t map);
+void save_scalex3(map_t map);
+void save_scalex5(map_t map);
 
 int save(map_t map) {
-	int x, y;
-	int width, height;
-	int scl;
-	png_byte color_type;
-	png_byte bit_depth;
-	png_structp png_ptr;
-	png_infop info_ptr;
-	png_bytep *row_pointers;
 	char *outFile;
-	
-	bit_depth = 8;
-	color_type = PNG_COLOR_TYPE_GRAY;
+	char *command;
+	int scl;
 	
 	scl = scale(map->m, map->n);
 
 	switch(scl) {
 		case 1:
-			row_pointers = save_scalex1(row_pointers, map);
-			width = map->m;
-			height = map->n;
+			save_scalex1(map);
 			break;
 		case 3:
-            row_pointers = save_scalex3(row_pointers, map);
-            width = 3*map->m;
-            height = 3*map->n;
+            save_scalex3(map);
 			break;
 		case 5:
-            row_pointers = save_scalex5(row_pointers, map);
-            width = 5*map->m;
-            height = 5*map->n;
+            save_scalex5(map);
 			break;
 	}
 
 	outFile = addNumToName(map->cfg.out);
+	command = createCommand(outFile);
 	
-	FILE *out = fopen(outFile, "wb");
-
-	if(out == NULL)
-		return -1;
-
-    png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
-
-    info_ptr = png_create_info_struct(png_ptr);
-    
-    png_init_io(png_ptr, out);
-    if(setjmp(png_jmpbuf(png_ptr)))
-        return 1;
-    
-    png_set_IHDR(png_ptr, info_ptr, width, height, bit_depth, color_type, PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_BASE, PNG_FILTER_TYPE_BASE);
-
-    png_write_info(png_ptr, info_ptr);
-
-    if(setjmp(png_jmpbuf(png_ptr)))
-        return 2;
-
-    png_write_image(png_ptr, row_pointers);
-    
-    if(setjmp(png_jmpbuf(png_ptr)))
-        return 3;
-    
-    png_write_end(png_ptr, NULL);
-    
-    for(y=0; y<height; y++);
-        free(row_pointers[y]);
-    free(row_pointers);
-	free (outFile);
+	system(command);
+	remove("out/cellsim_output_tmp.pbm");
 	
-    fclose(out);
+	free(outFile);
+	free(command);
 	
 	return 0;
 }
 
-png_bytep* save_scalex1(png_bytep *rows, map_t map) {
+void save_scalex1(map_t map) {
 	int x, y;
-    rows = (png_bytep*) malloc(sizeof(png_bytep)*map->m);
-    for(y=0; y<map->n; y++)
-        rows[y] = (png_byte*)malloc(sizeof(png_byte)*map->n);
-
-    for(y=0; y<map->n; y++) {
-        png_byte *row = rows[y];
-        for(x=0; x<map->m; x++) {
-            row[x] = map->board[x][y] == '\0' ? 0 : 255;
-        }
-    }
+	system("rm _r out");
+	system("mkdir out");
+	FILE *tmp_out = fopen("out/cellsim_output_tmp.pbm", "w");
 	
-	return rows;
+	fprintf(tmp_out, "P1\n%d %d\n", map->m, map->n);
+	
+	for(y=0; y<map->n; y++) {
+		for(x=0; x<map->m; x++) {
+			fprintf(tmp_out, "%d", map->borad[x][y] == '\0' ? 0 : 1);
+		}
+		fprintf("\n");
+	}
+	
+	fclose(tmp_out);
 }
 
 png_bytep* save_scalex3(png_bytep *rows, map_t map) {
