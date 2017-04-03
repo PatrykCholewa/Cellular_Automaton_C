@@ -3,7 +3,7 @@
 #include<stdio.h>
 #include<string.h>
 
-#define MAX_FILENAME_SIZE 30
+#define MAX_FILENAME_SIZE 1024
 #define BUF_SIZE 1024
 
 map_t initalloc (map_t map ){
@@ -19,7 +19,7 @@ map_t initalloc (map_t map ){
 	map->cfg.live = 0;
 	
 	map->cfg.out = malloc( MAX_FILENAME_SIZE * sizeof (map->cfg.out) );
-	map->cfg.out = "out";
+	map->cfg.out = ".png";
 
 	return map;
 
@@ -89,8 +89,8 @@ map_t add_cfg( map_t map , FILE *in ){
 			map->n = atoi(v);
 		}
 		if( strcmp( s , "live" ) == 0 ){
-			if( v = "yes" ){
-				map->cfg.live = 1;
+			if( strcmp( v , "yes" ) == 0 ){
+				map->cfg.live = 1;				
 			}
 		}
 	
