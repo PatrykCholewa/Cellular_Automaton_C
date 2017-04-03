@@ -10,7 +10,7 @@ test : all
 
 src/alloc.o : src/alloc.c src/alloc.h
 
-src/gen.o : srcex/gen.c srcex/gen.h
+#src/gen.o : srcex/gen.c srcex/gen.h
 
 src/save.o : src/save.c src/save.h
 
