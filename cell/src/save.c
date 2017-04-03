@@ -48,7 +48,7 @@ char* createCommand(char *c) {
 	char command_base[40] = "convert out/cellsim_output_tmp.pbm out/";
 	char *command = malloc(strlen(command_base)+strlen(c)+1);
 	strcpy(command, command_base);
-	strcat(command, command_base);
+	strcat(command, c);
 	return command;
 }
 
