@@ -10,8 +10,8 @@ map_t next_gen( map_t map ){
 	int j;
 	int k;
 
-	for( k = 0 ; k < map-> n ; k++ ){
-		memcpy( map->old_board[k] , map->board[k] , map->n * sizeof ( map->board[k] ) );
+	for( k = 0 ; k < map-> m ; k++ ){
+		memcpy( map->old_board[k] , map->board[k] , map->m * sizeof ( map->board[k] ) );
 	}
 
 	for( i = 0; i < map->m ; i++ ){
