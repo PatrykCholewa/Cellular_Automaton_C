@@ -31,7 +31,7 @@ map_t iter_gen( map_t map ){
 	int i;
 	int j;
 
-//	map = save( map );
+	save( map );
 
 	if( map->cfg.live == 1){
 		print_board ( map );
@@ -49,7 +49,7 @@ map_t iter_gen( map_t map ){
 
 		}
 			
-//		map = save ( map );
+		save ( map );
 
 	}
 
