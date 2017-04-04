@@ -17,17 +17,17 @@ void print_board( map_t map ){
 	system("clear");
 
 	printf(" ");
-	for( i = 0 ; i < map->n ; i++ ){
+	for( i = 0 ; i < map->m ; i++ ){
 		printf("-");
 	}
 	printf("\n");
 
-	for( i = 0 ; i < map->m ; i++ ){
+	for( i = 0 ; i < map->n ; i++ ){
 	
 		printf( "|" );	
 	
-		for( j = 0 ; j < map->n ; j++ ){
-			int p = map->board[i][j];
+		for( j = 0 ; j < map->m ; j++ ){
+			int p = map->board[j][i];
 			if ( p == 0 ){
 				printf(" ");
 			} else {
@@ -41,7 +41,7 @@ void print_board( map_t map ){
 	}
 	
 	printf( " " );
-	for( i = 0 ; i < map->n ; i++ ){
+	for( i = 0 ; i < map->m ; i++ ){
 		printf("-");
 	}
 	printf("\n");

@@ -1,7 +1,7 @@
 all : src/main.c src/struct.h src/alloc.o src/gen.o src/life.o src/nbr.o src/bound.o src/live.o src/save.c src/save.h
-	gcc -c src/save.c -lpng
+	gcc -pedantic -c src/save.c -lpng
 	mv save.o ./src
-	gcc -o cellsim src/main.c src/save.o src/alloc.o src/gen.o src/life.o src/live.o src/nbr.o src/bound.o -lpng
+	gcc -pedantic -o cellsim src/main.c src/save.o src/alloc.o src/gen.o src/life.o src/live.o src/nbr.o src/bound.o -lpng
 	mv cellsim ./bin
 
 test : all
